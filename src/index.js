@@ -1,7 +1,9 @@
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
-document.getElementById('app').innerHTML = `
+const game = document.getElementById('game');
+
+game.innerHTML = `
   <h1>Welcome to <code>button-clicker</code>.</h1>
   <a href="https://github.com/remarkablegames/button-clicker" target="_blank" rel="noopener noreferrer">
     View Source
