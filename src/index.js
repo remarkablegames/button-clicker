@@ -2,8 +2,8 @@ import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
 document.getElementById('app').innerHTML = `
-  <h1>Welcome to <code>web-app-template</code>.</h1>
-  <a href="https://github.com/remarkablemark/web-app-template" target="_blank" rel="noopener noreferrer">
+  <h1>Welcome to <code>button-clicker</code>.</h1>
+  <a href="https://github.com/remarkablegames/button-clicker" target="_blank" rel="noopener noreferrer">
     View Source
   </a>
 `;
