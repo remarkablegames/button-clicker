@@ -1,16 +1,22 @@
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
+let clicks = 0;
+
 const game = document.getElementById('game');
 
 const heading = document.createElement('h1');
 heading.innerText = 'Button Clicker';
 
 const counter = document.createElement('p');
-counter.innerText = '0';
+counter.innerText = clicks;
 
 const button = document.createElement('button');
 button.innerText = 'Click Button';
+button.addEventListener('click', () => {
+  clicks++;
+  counter.innerText = clicks;
+});
 
 [heading, counter, button].forEach(element => game.appendChild(element));
 
