@@ -2,21 +2,27 @@ import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
 // state
-let clicks = 0;
+const state = {
+  clicks: 0,
+};
 
 // elements
-const counter = document.getElementById('counter');
-const button = document.getElementById('button');
+const elements = {
+  button: document.getElementById('button'),
+  counter: document.getElementById('counter'),
+};
 
-// view
-const renderCounter = () => {
-  counter.innerText = clicks.toLocaleString();
+// views
+const views = {
+  renderCounter: () => {
+    elements.counter.innerText = state.clicks.toLocaleString();
+  },
 };
 
 // events
-button.addEventListener('click', () => {
-  clicks++;
-  renderCounter();
+elements.button.addEventListener('click', () => {
+  state.clicks++;
+  views.renderCounter();
 });
 
 // If you want your app to work offline and load faster, you can change
