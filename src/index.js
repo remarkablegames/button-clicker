@@ -6,16 +6,16 @@ let clicks = 0;
 const game = document.getElementById('game');
 
 const heading = document.createElement('h1');
-heading.innerText = 'Button Clicker';
+heading.innerText = 'Button Clicker'.toLocaleString();
 
 const counter = document.createElement('p');
-counter.innerText = clicks;
+counter.innerText = clicks.toLocaleString();
 
 const button = document.createElement('button');
-button.innerText = 'Click Button';
+button.innerText = 'Click Button'.toLocaleString();
 button.addEventListener('click', () => {
   clicks++;
-  counter.innerText = clicks;
+  counter.innerText = clicks.toLocaleString();
 });
 
 [heading, counter, button].forEach(element => game.appendChild(element));
