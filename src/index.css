@@ -4,6 +4,6 @@ body {
   padding: 50px;
 }
 
-a {
-  color: #00b7ff;
+main {
+  display: block;
 }
