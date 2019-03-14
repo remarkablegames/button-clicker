@@ -1,6 +1,9 @@
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
+// constants
+const CLICK_EVENT = 'click';
+
 // state
 const state = {
   clicks: 0,
@@ -20,7 +23,7 @@ const views = {
 };
 
 // events
-elements.button.addEventListener('click', () => {
+elements.button.addEventListener(CLICK_EVENT, () => {
   state.clicks++;
   views.renderCounter();
 });
