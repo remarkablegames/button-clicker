@@ -22,10 +22,17 @@ const views = {
   },
 };
 
+// actions
+const actions = {
+  incrementCounter: (number = 1) => {
+    state.clicks += number;
+    views.renderCounter();
+  },
+};
+
 // events
 elements.button.addEventListener(CLICK_EVENT, () => {
-  state.clicks++;
-  views.renderCounter();
+  actions.incrementCounter();
 });
 
 // If you want your app to work offline and load faster, you can change
