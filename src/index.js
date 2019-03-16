@@ -6,6 +6,9 @@ const CLICK_EVENT = 'click';
 
 // state
 const state = {
+  button: {
+    increment: 1,
+  },
   clicks: 0,
 };
 
@@ -24,7 +27,7 @@ const views = {
 
 // actions
 const actions = {
-  incrementCounter: (number = 1) => {
+  increment: (number = 0) => {
     state.clicks += number;
     views.renderCounter();
   },
@@ -32,7 +35,7 @@ const actions = {
 
 // events
 elements.button.addEventListener(CLICK_EVENT, () => {
-  actions.incrementCounter();
+  actions.increment(state.button.increment);
 });
 
 // If you want your app to work offline and load faster, you can change
