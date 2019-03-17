@@ -6,10 +6,11 @@ const CLICK_EVENT = 'click';
 
 // state
 const state = {
-  button: {
-    increment: 1,
-  },
   clicks: 0,
+  cursor: {
+    cost: 15,
+    output: 1,
+  },
 };
 
 // elements
@@ -35,7 +36,7 @@ const actions = {
 
 // events
 elements.button.addEventListener(CLICK_EVENT, () => {
-  actions.increment(state.button.increment);
+  actions.increment(state.cursor.output);
 });
 
 // If you want your app to work offline and load faster, you can change
