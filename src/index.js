@@ -25,13 +25,6 @@ const elements = {
 
 // views
 const views = {
-  renderAll: () => {
-    for (let methodName in views) {
-      if (methodName !== 'renderAll') {
-        views[methodName]();
-      }
-    }
-  },
   renderCounter: () => {
     elements.counter.innerText = state.clicks.toLocaleString();
   },
@@ -63,7 +56,8 @@ elements.button.addEventListener(CLICK_EVENT, () => {
 });
 
 // initialize
-views.renderAll();
+views.renderCounter();
+views.renderStoreCursor();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
