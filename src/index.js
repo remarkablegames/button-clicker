@@ -8,9 +8,16 @@ const CLICK_EVENT = 'click';
 const state = {
   clicks: 0,
   cursor: {
-    cost: 15,
-    output: 1,
-    multiplier: 1.15,
+    cost: {
+      base: 25,
+      next: 25,
+      rate: 2,
+    },
+    output: {
+      base: 1,
+      current: 1,
+      next: 2,
+    },
     owned: 0,
   },
 };
@@ -34,11 +41,12 @@ const views = {
     storeCursor.querySelector(
       '.owned'
     ).innerText = cursor.owned.toLocaleString();
-    storeCursor.querySelector('.cost').innerText = cursor.cost.toLocaleString();
-    const nextOutput = Math.ceil(cursor.output * cursor.multiplier);
+    storeCursor.querySelector(
+      '.cost'
+    ).innerText = cursor.cost.next.toLocaleString();
     storeCursor.querySelector(
       '.output'
-    ).innerText = `${nextOutput.toLocaleString()} per click`;
+    ).innerText = `${cursor.output.next.toLocaleString()} per click`;
   },
 };
 
@@ -52,7 +60,7 @@ const actions = {
 
 // events
 elements.button.addEventListener(CLICK_EVENT, () => {
-  actions.increment(state.cursor.output);
+  actions.increment(state.cursor.output.current);
 });
 
 // initialize
