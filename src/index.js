@@ -55,6 +55,17 @@ const actions = {
   increment: (number = 0) => {
     state.clicks += number;
     views.renderCounter();
+    const button = elements.store.querySelector('button');
+    button.disabled = state.clicks < state.cursor.cost.next;
+  },
+  updateStoreCursor: () => {
+    const { cursor } = state;
+    cursor.owned++;
+    const { cost, output } = cursor;
+    cost.next = Math.floor(cost.base * Math.pow(cost.rate, cursor.owned));
+    output.current = output.next;
+    output.next = Math.round(output.base * (cursor.owned + 2));
+    views.renderStoreCursor();
   },
 };
 
