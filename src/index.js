@@ -74,6 +74,15 @@ elements.button.addEventListener(CLICK_EVENT, () => {
   actions.increment(state.cursor.output.current);
 });
 
+elements.storeCursor
+  .querySelector('button')
+  .addEventListener(CLICK_EVENT, () => {
+    if (state.clicks >= state.cursor.cost.next) {
+      actions.increment(-state.cursor.cost.next);
+      actions.updateStoreCursor();
+    }
+  });
+
 // initialize
 views.renderCounter();
 views.renderStoreCursor();
