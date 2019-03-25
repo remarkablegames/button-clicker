@@ -2,7 +2,8 @@ import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
 // constants
-const CLICK_EVENT = 'click';
+const CLICK = 'click';
+const BUTTON = 'button';
 
 // state
 const state = {
@@ -55,7 +56,7 @@ const actions = {
   increment: (number = 0) => {
     state.clicks += number;
     views.renderCounter();
-    const button = elements.store.querySelector('button');
+    const button = elements.store.querySelector(BUTTON);
     button.disabled = state.clicks < state.cursor.cost.next;
   },
   updateStoreCursor: () => {
@@ -70,18 +71,16 @@ const actions = {
 };
 
 // events
-elements.button.addEventListener(CLICK_EVENT, () => {
+elements.button.addEventListener(CLICK, () => {
   actions.increment(state.cursor.output.current);
 });
 
-elements.storeCursor
-  .querySelector('button')
-  .addEventListener(CLICK_EVENT, () => {
-    if (state.clicks >= state.cursor.cost.next) {
-      actions.increment(-state.cursor.cost.next);
-      actions.updateStoreCursor();
-    }
-  });
+elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
+  if (state.clicks >= state.cursor.cost.next) {
+    actions.increment(-state.cursor.cost.next);
+    actions.updateStoreCursor();
+  }
+});
 
 // initialize
 views.renderCounter();
