@@ -23,7 +23,7 @@ const state = {
       current: 1,
       next: 2,
     },
-    owned: 0,
+    owned: 1,
   },
 };
 
@@ -47,9 +47,9 @@ const views = {
   renderStoreCursor: () => {
     const { storeCursor } = elements;
     const { cursor } = state;
-    storeCursor.querySelector(
-      '.owned'
-    ).innerText = cursor.owned.toLocaleString();
+    storeCursor.querySelector('.owned').innerText = (
+      cursor.owned - 1
+    ).toLocaleString();
     storeCursor.querySelector(
       '.cost'
     ).innerText = cursor.cost.next.toLocaleString();
@@ -73,9 +73,9 @@ const actions = {
     const { cursor } = state;
     cursor.owned++;
     const { cost, output } = cursor;
-    cost.next = Math.floor(cost.base * Math.pow(cost.rate, cursor.owned));
+    cost.next = Math.floor(cost.base * Math.pow(cost.rate, cursor.owned - 1));
     output.current = output.next;
-    output.next = Math.round(output.base * (cursor.owned + 2));
+    output.next = Math.round(output.base * cursor.owned);
     views.renderStoreCursor();
   },
 };
