@@ -64,6 +64,16 @@ const formatGeneratorOutput = (clicks, seconds) => {
   ].join(' ');
 };
 
+/**
+ * @param  {Number} base
+ * @param  {Number} rate
+ * @param  {Number} owned
+ * @return {Number}
+ */
+const calculateNextCost = (base, rate, owned) => {
+  return Math.floor(base * Math.pow(rate, owned));
+};
+
 /** Views. */
 const views = {
   renderCounter: () => {
@@ -110,20 +120,20 @@ const actions = {
   },
   updateStoreCursor: () => {
     const { cursor } = state;
-    cursor.owned++;
     const { cost, output } = cursor;
-    cost.next = Math.floor(cost.base * Math.pow(cost.rate, cursor.owned - 1));
+    const owned = ++cursor.owned;
+    cost.next = calculateNextCost(cost.base, cost.rate, owned - 1);
     output.current = output.next;
-    output.next = Math.round(output.base * cursor.owned);
+    output.next = Math.round(output.base * owned);
     views.renderStoreCursor();
   },
   updateStoreGenerator: () => {
     const { generator } = state;
-    generator.owned++;
     const { cost, output } = generator;
-    cost.next = Math.floor(cost.base * Math.pow(cost.rate, generator.owned));
+    const owned = ++generator.owned;
+    cost.next = calculateNextCost(cost.base, cost.rate, owned);
     output.current = output.next;
-    output.next = Math.round(output.base * (generator.owned + 1));
+    output.next = Math.round(output.base * (owned + 1));
     views.renderStoreGenerator();
   },
 };
