@@ -1,11 +1,15 @@
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
-// constants
+/**
+ * Constants.
+ */
 const CLICK = 'click';
 const BUTTON = 'button';
 
-// state
+/**
+ * State.
+ */
 const state = {
   clicks: 0,
   cursor: {
@@ -23,7 +27,9 @@ const state = {
   },
 };
 
-// elements
+/**
+ * Elements.
+ */
 const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
@@ -31,7 +37,9 @@ const elements = {
   storeCursor: document.getElementById('cursor'),
 };
 
-// views
+/**
+ * Views.
+ */
 const views = {
   renderCounter: () => {
     elements.counter.innerText = state.clicks.toLocaleString();
@@ -51,7 +59,9 @@ const views = {
   },
 };
 
-// actions
+/**
+ * Actions.
+ */
 const actions = {
   increment: (number = 0) => {
     state.clicks += number;
@@ -70,11 +80,15 @@ const actions = {
   },
 };
 
-// events
+/**
+ * Events.
+ */
+// click button
 elements.button.addEventListener(CLICK, () => {
   actions.increment(state.cursor.output.current);
 });
 
+// upgrade cursor
 elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks >= state.cursor.cost.next) {
     actions.increment(-state.cursor.cost.next);
@@ -82,7 +96,9 @@ elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   }
 });
 
-// initialize
+/**
+ * Bootstrap.
+ */
 views.renderCounter();
 views.renderStoreCursor();
 
