@@ -14,8 +14,8 @@ const state = {
   clicks: 0,
   cursor: {
     cost: {
-      base: 25,
-      next: 25,
+      base: 50,
+      next: 50,
       rate: 2,
     },
     output: {
