@@ -110,14 +110,25 @@ const views = {
 
 /** Actions. */
 const actions = {
-  increment: (number = 0) => {
-    state.clicks += number;
+  /**
+   * @param {Number} clicks
+   */
+  increment: clicks => {
+    state.clicks += clicks;
     views.renderCounter();
     const cursorButton = elements.storeCursor.querySelector(BUTTON);
     cursorButton.disabled = state.clicks < state.cursor.cost.next;
     const generatorButton = elements.storeGenerator.querySelector(BUTTON);
     generatorButton.disabled = state.clicks < state.generator.cost.next;
   },
+
+  /**
+   * @param {Number} clicks
+   */
+  decrement: clicks => {
+    actions.increment(-clicks);
+  },
+
   updateStoreCursor: () => {
     const { cursor } = state;
     const { cost, output } = cursor;
@@ -127,6 +138,7 @@ const actions = {
     output.next = Math.round(output.base * owned);
     views.renderStoreCursor();
   },
+
   updateStoreGenerator: () => {
     const { generator } = state;
     const { cost, output } = generator;
@@ -148,7 +160,7 @@ elements.button.addEventListener(CLICK, () => {
 // upgrade cursor
 elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks >= state.cursor.cost.next) {
-    actions.increment(-state.cursor.cost.next);
+    actions.decrement(state.cursor.cost.next);
     actions.updateStoreCursor();
   }
 });
@@ -157,7 +169,7 @@ elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
 elements.storeGenerator.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks >= state.generator.cost.next) {
     const { generator, intervals } = state;
-    actions.increment(-generator.cost.next);
+    actions.decrement(generator.cost.next);
     actions.updateStoreGenerator();
 
     if (intervals.generator) {
