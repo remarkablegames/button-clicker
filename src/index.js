@@ -47,6 +47,23 @@ const elements = {
   storeGenerator: document.getElementById('generator'),
 };
 
+/** Helpers. */
+
+/**
+ * @param  {Number} clicks
+ * @param  {Number} seconds
+ * @return {String}
+ */
+const formatGeneratorOutput = (clicks, seconds) => {
+  return [
+    clicks.toLocaleString(),
+    clicks > 1 ? 'clicks' : 'click',
+    'per',
+    seconds.toLocaleString(),
+    seconds > 1 ? 'seconds' : 'second',
+  ].join(' ');
+};
+
 /** Views. */
 const views = {
   renderCounter: () => {
@@ -74,11 +91,10 @@ const views = {
     storeGenerator.querySelector(
       '.cost'
     ).innerText = generator.cost.next.toLocaleString();
-    storeGenerator.querySelector(
-      '.output'
-    ).innerText = `${generator.output.next.toLocaleString()} click per ${
+    storeGenerator.querySelector('.output').innerText = formatGeneratorOutput(
+      generator.output.next,
       generator.delay
-    } second`;
+    );
   },
 };
 
