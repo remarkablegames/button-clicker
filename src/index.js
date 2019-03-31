@@ -1,15 +1,11 @@
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
-/**
- * Constants.
- */
+/** Constants. */
 const CLICK = 'click';
 const BUTTON = 'button';
 
-/**
- * State.
- */
+/** State. */
 const state = {
   clicks: 0,
   cursor: {
@@ -42,9 +38,7 @@ const state = {
   intervals: {},
 };
 
-/**
- * Elements.
- */
+/** Elements. */
 const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
@@ -53,9 +47,7 @@ const elements = {
   storeGenerator: document.getElementById('generator'),
 };
 
-/**
- * Views.
- */
+/** Views. */
 const views = {
   renderCounter: () => {
     elements.counter.innerText = state.clicks.toLocaleString();
@@ -90,9 +82,7 @@ const views = {
   },
 };
 
-/**
- * Actions.
- */
+/** Actions. */
 const actions = {
   increment: (number = 0) => {
     state.clicks += number;
@@ -122,9 +112,8 @@ const actions = {
   },
 };
 
-/**
- * Events.
- */
+/** Events. */
+
 // click button
 elements.button.addEventListener(CLICK, () => {
   actions.increment(state.cursor.output.current);
@@ -158,9 +147,7 @@ elements.storeGenerator.querySelector(BUTTON).addEventListener(CLICK, () => {
   }
 });
 
-/**
- * Bootstrap.
- */
+/** Bootstrap. */
 views.renderCounter();
 views.renderStoreCursor();
 views.renderStoreGenerator();
