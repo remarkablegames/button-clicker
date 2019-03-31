@@ -7,7 +7,10 @@ const BUTTON = 'button';
 
 /** State. */
 const state = {
-  clicks: 0,
+  clicks: {
+    current: 0,
+    total: 0,
+  },
   cursor: {
     owned: 1,
     cost: {
@@ -77,7 +80,7 @@ const calculateNextCost = (base, rate, owned) => {
 /** Views. */
 const views = {
   renderCounter: () => {
-    elements.counter.innerText = state.clicks.toLocaleString();
+    elements.counter.innerText = state.clicks.current.toLocaleString();
   },
   renderStoreCursor: () => {
     const { storeCursor } = elements;
@@ -111,22 +114,27 @@ const views = {
 /** Actions. */
 const actions = {
   /**
-   * @param {Number} clicks
+   * @param {Number}  number
+   * @param {Boolean} [skipTotal]
    */
-  increment: clicks => {
-    state.clicks += clicks;
+  increment: (number, skipTotal) => {
+    const { clicks } = state;
+    clicks.current += number;
+    if (!skipTotal) {
+      clicks.total += number;
+    }
     views.renderCounter();
     const cursorButton = elements.storeCursor.querySelector(BUTTON);
-    cursorButton.disabled = state.clicks < state.cursor.cost.next;
+    cursorButton.disabled = clicks.current < state.cursor.cost.next;
     const generatorButton = elements.storeGenerator.querySelector(BUTTON);
-    generatorButton.disabled = state.clicks < state.generator.cost.next;
+    generatorButton.disabled = clicks.current < state.generator.cost.next;
   },
 
   /**
    * @param {Number} clicks
    */
   decrement: clicks => {
-    actions.increment(-clicks);
+    actions.increment(-clicks, true);
   },
 
   updateStoreCursor: () => {
@@ -159,7 +167,7 @@ elements.button.addEventListener(CLICK, () => {
 
 // upgrade cursor
 elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
-  if (state.clicks >= state.cursor.cost.next) {
+  if (state.clicks.current >= state.cursor.cost.next) {
     actions.decrement(state.cursor.cost.next);
     actions.updateStoreCursor();
   }
@@ -167,7 +175,7 @@ elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
 
 // purchase generator
 elements.storeGenerator.querySelector(BUTTON).addEventListener(CLICK, () => {
-  if (state.clicks >= state.generator.cost.next) {
+  if (state.clicks.current >= state.generator.cost.next) {
     const { generator, intervals } = state;
     actions.decrement(generator.cost.next);
     actions.updateStoreGenerator();
