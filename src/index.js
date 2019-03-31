@@ -25,6 +25,21 @@ const state = {
       base: 1,
     },
   },
+  generator: {
+    owned: 0,
+    delay: 10, // in seconds
+    cost: {
+      next: 50,
+      base: 50,
+      rate: 1.1,
+    },
+    output: {
+      current: 0,
+      next: 1,
+      base: 1,
+    },
+  },
+  intervals: {},
 };
 
 /**
@@ -35,6 +50,7 @@ const elements = {
   counter: document.getElementById('counter'),
   store: document.getElementById('store'),
   storeCursor: document.getElementById('cursor'),
+  storeGenerator: document.getElementById('generator'),
 };
 
 /**
@@ -57,6 +73,21 @@ const views = {
       '.output'
     ).innerText = `${cursor.output.next.toLocaleString()} per click`;
   },
+  renderStoreGenerator: () => {
+    const { storeGenerator } = elements;
+    const { generator } = state;
+    storeGenerator.querySelector(
+      '.owned'
+    ).innerText = generator.owned.toLocaleString();
+    storeGenerator.querySelector(
+      '.cost'
+    ).innerText = generator.cost.next.toLocaleString();
+    storeGenerator.querySelector(
+      '.output'
+    ).innerText = `${generator.output.next.toLocaleString()} click per ${
+      generator.delay
+    } second`;
+  },
 };
 
 /**
@@ -66,8 +97,10 @@ const actions = {
   increment: (number = 0) => {
     state.clicks += number;
     views.renderCounter();
-    const button = elements.store.querySelector(BUTTON);
-    button.disabled = state.clicks < state.cursor.cost.next;
+    const cursorButton = elements.storeCursor.querySelector(BUTTON);
+    cursorButton.disabled = state.clicks < state.cursor.cost.next;
+    const generatorButton = elements.storeGenerator.querySelector(BUTTON);
+    generatorButton.disabled = state.clicks < state.generator.cost.next;
   },
   updateStoreCursor: () => {
     const { cursor } = state;
@@ -77,6 +110,15 @@ const actions = {
     output.current = output.next;
     output.next = Math.round(output.base * cursor.owned);
     views.renderStoreCursor();
+  },
+  updateStoreGenerator: () => {
+    const { generator } = state;
+    generator.owned++;
+    const { cost, output } = generator;
+    cost.next = Math.floor(cost.base * Math.pow(cost.rate, generator.owned));
+    output.current = output.next;
+    output.next = Math.round(output.base * (generator.owned + 1));
+    views.renderStoreGenerator();
   },
 };
 
@@ -96,11 +138,32 @@ elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   }
 });
 
+// purchase generator
+elements.storeGenerator.querySelector(BUTTON).addEventListener(CLICK, () => {
+  if (state.clicks >= state.generator.cost.next) {
+    const { generator, intervals } = state;
+    actions.increment(-generator.cost.next);
+    actions.updateStoreGenerator();
+
+    if (intervals.generator) {
+      intervals.generator.callback = () =>
+        actions.increment(generator.output.current);
+    } else {
+      intervals.generator = {
+        output: generator.output.current,
+        callback: () => actions.increment(generator.output.current),
+      };
+      setInterval(intervals.generator.callback, generator.delay * 1000);
+    }
+  }
+});
+
 /**
  * Bootstrap.
  */
 views.renderCounter();
 views.renderStoreCursor();
+views.renderStoreGenerator();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
