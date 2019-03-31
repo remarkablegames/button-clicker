@@ -13,17 +13,17 @@ const BUTTON = 'button';
 const state = {
   clicks: 0,
   cursor: {
+    owned: 1,
     cost: {
-      base: 50,
       next: 50,
+      base: 50,
       rate: 2,
     },
     output: {
-      base: 1,
       current: 1,
       next: 2,
+      base: 1,
     },
-    owned: 1,
   },
 };
 
