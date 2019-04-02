@@ -1,6 +1,6 @@
 {
   "name": "button-clicker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A button clicker idle game.",
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
