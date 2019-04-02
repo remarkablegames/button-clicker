@@ -41,7 +41,6 @@ const state = {
       },
     },
   },
-  intervals: {},
 };
 
 /** Elements. */
@@ -219,22 +218,21 @@ Object.keys(state.generators).forEach(id => {
 
   generatorRow.querySelector(BUTTON).addEventListener(CLICK, () => {
     if (state.clicks.current >= generator.cost.next) {
-      const { intervals } = state;
       actions.decrement(generator.cost.next);
       actions.updateGenerator(id);
 
-      if (intervals.generator) {
-        intervals.generator.callback = () => {
+      if (generator.interval) {
+        generator.interval.callback = () => {
           actions.increment(generator.output.current);
         };
       } else {
-        intervals.generator = {
+        generator.interval = {
           output: generator.output.current,
           callback: () => {
             actions.increment(generator.output.current);
           },
         };
-        setInterval(intervals.generator.callback, generator.delay * 1000);
+        setInterval(generator.interval.callback, generator.delay * 1000);
       }
     }
   });
