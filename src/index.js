@@ -49,7 +49,7 @@ const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
   store: document.getElementById('store'),
-  storeCursor: document.getElementById('cursor'),
+  storeCursor: document.getElementById('upgrade'),
 };
 Object.keys(state.generators).forEach(id => {
   const generatorNode = elements.storeCursor.cloneNode(true);
