@@ -32,9 +32,9 @@ const state = {
       owned: 0,
       delay: 10, // in seconds
       cost: {
-        next: 50,
-        base: 50,
-        rate: 1.1,
+        next: 25,
+        base: 25,
+        rate: 1.15,
       },
       output: {
         current: 0,
@@ -66,7 +66,7 @@ const state = {
       cost: {
         next: 200,
         base: 200,
-        rate: 1.1,
+        rate: 1.07,
       },
       output: {
         current: 0,
