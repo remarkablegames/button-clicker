@@ -49,10 +49,10 @@ const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
   store: document.getElementById('store'),
-  storeCursor: document.getElementById('upgrade'),
+  cursor: document.getElementById('upgrade'),
 };
 Object.keys(state.generators).forEach(id => {
-  const generatorNode = elements.storeCursor.cloneNode(true);
+  const generatorNode = elements.cursor.cloneNode(true);
   generatorNode.id = id;
   generatorNode.querySelector(BUTTON).innerText = state.generators[id].label;
   elements.store.appendChild(generatorNode);
@@ -91,16 +91,16 @@ const views = {
     elements.counter.innerText = state.clicks.current.toLocaleString();
   },
 
-  renderStoreCursor: () => {
-    const { storeCursor } = elements;
+  renderCursor: () => {
+    const cursorRow = elements.cursor;
     const { cursor } = state;
-    storeCursor.querySelector('.owned').innerText = (
+    cursorRow.querySelector('.owned').innerText = (
       cursor.owned - 1
     ).toLocaleString();
-    storeCursor.querySelector(
+    cursorRow.querySelector(
       '.cost'
     ).innerText = cursor.cost.next.toLocaleString();
-    storeCursor.querySelector(
+    cursorRow.querySelector(
       '.output'
     ).innerText = `${cursor.output.next.toLocaleString()} per click`;
   },
@@ -108,7 +108,7 @@ const views = {
   /**
    * @param {String} id
    */
-  renderStoreGenerator: id => {
+  renderGenerator: id => {
     const generator = state.generators[id];
     const generatorRow = document.getElementById(id);
     generatorRow.querySelector(
@@ -123,9 +123,9 @@ const views = {
     );
   },
 
-  renderStoreGenerators: () => {
+  renderGenerators: () => {
     Object.keys(state.generators).forEach(id => {
-      views.renderStoreGenerator(id);
+      views.renderGenerator(id);
     });
   },
 };
@@ -144,7 +144,7 @@ const actions = {
     }
 
     views.renderCounter();
-    const cursorButton = elements.storeCursor.querySelector(BUTTON);
+    const cursorButton = elements.cursor.querySelector(BUTTON);
     cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
@@ -162,27 +162,27 @@ const actions = {
     actions.increment(-clicks, true);
   },
 
-  updateStoreCursor: () => {
+  updateCursor: () => {
     const { cursor } = state;
     const { cost, output } = cursor;
     const owned = ++cursor.owned;
     cost.next = calculateNextCost(cost.base, cost.rate, owned - 1);
     output.current = output.next;
     output.next = Math.round(output.base * owned);
-    views.renderStoreCursor();
+    views.renderCursor();
   },
 
   /**
    * @param {String} id
    */
-  updateStoreGenerator: id => {
+  updateGenerator: id => {
     const generator = state.generators[id];
     const { cost, output } = generator;
     const owned = ++generator.owned;
     cost.next = calculateNextCost(cost.base, cost.rate, owned);
     output.current = output.next;
     output.next = Math.round(output.base * (owned + 1));
-    views.renderStoreGenerator(id);
+    views.renderGenerator(id);
   },
 };
 
@@ -194,10 +194,10 @@ elements.button.addEventListener(CLICK, () => {
 });
 
 // upgrade cursor
-elements.storeCursor.querySelector(BUTTON).addEventListener(CLICK, () => {
+elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks.current >= state.cursor.cost.next) {
     actions.decrement(state.cursor.cost.next);
-    actions.updateStoreCursor();
+    actions.updateCursor();
   }
 });
 
@@ -210,7 +210,7 @@ Object.keys(state.generators).forEach(id => {
     if (state.clicks.current >= generator.cost.next) {
       const { intervals } = state;
       actions.decrement(generator.cost.next);
-      actions.updateStoreGenerator(id);
+      actions.updateGenerator(id);
 
       if (intervals.generator) {
         intervals.generator.callback = () => {
@@ -231,8 +231,8 @@ Object.keys(state.generators).forEach(id => {
 
 /** Bootstrap. */
 views.renderCounter();
-views.renderStoreCursor();
-views.renderStoreGenerators();
+views.renderCursor();
+views.renderGenerators();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
