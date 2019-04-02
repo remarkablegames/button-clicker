@@ -47,8 +47,11 @@ const elements = {
   counter: document.getElementById('counter'),
   store: document.getElementById('store'),
   storeCursor: document.getElementById('cursor'),
-  storeGenerator: document.getElementById('generator'),
 };
+elements.storeGenerator = elements.storeCursor.cloneNode(true);
+elements.storeGenerator.id = '';
+elements.storeGenerator.querySelector(BUTTON).innerText = 'Generator';
+elements.store.appendChild(elements.storeGenerator);
 
 /** Helpers. */
 
