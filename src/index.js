@@ -48,9 +48,10 @@ const state = {
 const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
-  store: document.getElementById('store'),
   cursor: document.getElementById('upgrade'),
+  store: document.getElementById('store'),
 };
+
 Object.keys(state.generators).forEach(id => {
   const generatorNode = elements.cursor.cloneNode(true);
   generatorNode.id = id;
@@ -59,6 +60,26 @@ Object.keys(state.generators).forEach(id => {
 });
 
 /** Helpers. */
+
+/**
+ * @param  {Number} base
+ * @param  {Number} rate
+ * @param  {Number} owned
+ * @return {Number}
+ */
+const calculateNextCost = (base, rate, owned) => {
+  return Math.floor(base * Math.pow(rate, owned));
+};
+
+/**
+ * @param  {String}      id
+ * @return {HTMLElement}
+ */
+const getElementById = id => {
+  return elements[id]
+    ? elements[id]
+    : (elements[id] = document.getElementById(id));
+};
 
 /**
  * @param  {Number} clicks
@@ -73,16 +94,6 @@ const formatGeneratorOutput = (clicks, seconds) => {
     seconds.toLocaleString(),
     seconds > 1 ? 'seconds' : 'second',
   ].join(' ');
-};
-
-/**
- * @param  {Number} base
- * @param  {Number} rate
- * @param  {Number} owned
- * @return {Number}
- */
-const calculateNextCost = (base, rate, owned) => {
-  return Math.floor(base * Math.pow(rate, owned));
 };
 
 /** Views. */
@@ -110,7 +121,7 @@ const views = {
    */
   renderGenerator: id => {
     const generator = state.generators[id];
-    const generatorRow = document.getElementById(id);
+    const generatorRow = getElementById(id);
     generatorRow.querySelector(
       '.owned'
     ).innerText = generator.owned.toLocaleString();
@@ -149,7 +160,7 @@ const actions = {
 
     const { generators } = state;
     Object.keys(generators).forEach(id => {
-      const generatorRow = document.getElementById(id);
+      const generatorRow = getElementById(id);
       const generatorButton = generatorRow.querySelector(BUTTON);
       generatorButton.disabled = clicks.current < generators[id].cost.next;
     });
@@ -204,7 +215,7 @@ elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
 // purchase generator
 Object.keys(state.generators).forEach(id => {
   const generator = state.generators[id];
-  const generatorRow = document.getElementById(id);
+  const generatorRow = getElementById(id);
 
   generatorRow.querySelector(BUTTON).addEventListener(CLICK, () => {
     if (state.clicks.current >= generator.cost.next) {
