@@ -11,6 +11,7 @@ const state = {
     current: 0,
     total: 0,
   },
+
   cursor: {
     owned: 1,
     cost: {
@@ -24,14 +25,47 @@ const state = {
       base: 1,
     },
   },
+
   generators: {
-    generator: {
-      label: 'Generator',
+    generatorA: {
+      label: 'Generator A',
       owned: 0,
       delay: 10, // in seconds
       cost: {
         next: 50,
         base: 50,
+        rate: 1.1,
+      },
+      output: {
+        current: 0,
+        next: 1,
+        base: 1,
+      },
+    },
+
+    generatorB: {
+      label: 'Generator B',
+      owned: 0,
+      delay: 5, // in seconds
+      cost: {
+        next: 100,
+        base: 100,
+        rate: 1.1,
+      },
+      output: {
+        current: 0,
+        next: 1,
+        base: 1,
+      },
+    },
+
+    generatorC: {
+      label: 'Generator C',
+      owned: 0,
+      delay: 3, // in seconds
+      cost: {
+        next: 200,
+        base: 200,
         rate: 1.1,
       },
       output: {
