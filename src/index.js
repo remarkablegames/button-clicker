@@ -145,7 +145,10 @@ const views = {
       '.cost'
     ).innerText = cursor.cost.next.toLocaleString();
     cursorRow.querySelector(
-      '.output'
+      '.output-current'
+    ).innerText = `${cursor.output.current.toLocaleString()} per click`;
+    cursorRow.querySelector(
+      '.output-next'
     ).innerText = `${cursor.output.next.toLocaleString()} per click`;
   },
 
@@ -161,10 +164,15 @@ const views = {
     generatorRow.querySelector(
       '.cost'
     ).innerText = generator.cost.next.toLocaleString();
-    generatorRow.querySelector('.output').innerText = formatGeneratorOutput(
-      generator.output.next,
+    generatorRow.querySelector(
+      '.output-current'
+    ).innerText = formatGeneratorOutput(
+      generator.output.current,
       generator.delay
     );
+    generatorRow.querySelector(
+      '.output-next'
+    ).innerText = formatGeneratorOutput(generator.output.next, generator.delay);
   },
 
   renderGenerators: () => {
