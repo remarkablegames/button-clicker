@@ -22,7 +22,7 @@ const state = {
     output: {
       current: 1,
       next: 2,
-      base: 1,
+      base: 2,
     },
   },
 
