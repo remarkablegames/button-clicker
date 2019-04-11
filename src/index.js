@@ -122,10 +122,10 @@ const getElementById = id => {
 const formatGeneratorOutput = (clicks, seconds) => {
   return [
     clicks.toLocaleString(),
-    clicks > 1 ? 'clicks' : 'click',
+    clicks === 1 ? 'click' : 'clicks',
     'per',
     seconds.toLocaleString(),
-    seconds > 1 ? 'seconds' : 'second',
+    seconds === 1 ? 'second' : 'seconds',
   ].join(' ');
 };
 
