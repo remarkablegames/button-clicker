@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.2.0](https://github.com/remarkablegames/button-clicker/compare/v0.1.0...v0.2.0) (2019-04-12)
+
+
+### Bug Fixes
+
+* **src:** correct grammar in `formatGeneratorOutput` ([1d5bd1e](https://github.com/remarkablegames/button-clicker/commit/1d5bd1e))
+
+
+### Features
+
+* rename next output column and add column for current output ([a66609a](https://github.com/remarkablegames/button-clicker/commit/a66609a))
+* **src:** add zebra stripes to table to improve readability ([162b0c2](https://github.com/remarkablegames/button-clicker/commit/162b0c2))
+* **src:** increase cursor output base from 1 to 2 ([17de33f](https://github.com/remarkablegames/button-clicker/commit/17de33f))
+
+
+
 # 0.1.0 (2019-04-02)
 
 
