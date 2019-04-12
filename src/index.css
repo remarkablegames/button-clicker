@@ -12,6 +12,11 @@ table {
   border-collapse: collapse;
 }
 
+/* zebra stripes */
+tr:nth-child(even) {
+  background: #eee;
+}
+
 th,
 td {
   border: 1px solid #ddd;
