@@ -6,76 +6,82 @@ const CLICK = 'click';
 const BUTTON = 'button';
 
 /** State. */
-const state = {
-  clicks: {
-    current: 0,
-    total: 0,
-  },
+const state = {};
 
-  cursor: {
-    owned: 1,
+// clicks
+state.clicks = {
+  current: 0,
+  total: 0,
+};
+
+// cursor
+state.cursor = {
+  owned: 1,
+  cost: {
+    base: 50,
+    rate: 2,
+  },
+  output: {
+    base: 2,
+    current: 1,
+  },
+};
+
+// generators
+state.generators = {
+  generatorA: {
+    label: 'Generator A',
+    owned: 0,
+    delay: 10,
     cost: {
-      next: 50,
-      base: 50,
-      rate: 2,
+      base: 25,
+      rate: 1.15,
     },
     output: {
-      current: 1,
-      next: 2,
-      base: 2,
+      base: 1,
+      current: 0,
     },
   },
 
-  generators: {
-    generatorA: {
-      label: 'Generator A',
-      owned: 0,
-      delay: 10, // in seconds
-      cost: {
-        next: 25,
-        base: 25,
-        rate: 1.15,
-      },
-      output: {
-        current: 0,
-        next: 1,
-        base: 1,
-      },
+  generatorB: {
+    label: 'Generator B',
+    owned: 0,
+    delay: 5,
+    cost: {
+      base: 100,
+      rate: 1.1,
     },
-
-    generatorB: {
-      label: 'Generator B',
-      owned: 0,
-      delay: 5, // in seconds
-      cost: {
-        next: 100,
-        base: 100,
-        rate: 1.1,
-      },
-      output: {
-        current: 0,
-        next: 1,
-        base: 1,
-      },
+    output: {
+      base: 1,
+      current: 0,
     },
+  },
 
-    generatorC: {
-      label: 'Generator C',
-      owned: 0,
-      delay: 3, // in seconds
-      cost: {
-        next: 200,
-        base: 200,
-        rate: 1.07,
-      },
-      output: {
-        current: 0,
-        next: 1,
-        base: 1,
-      },
+  generatorC: {
+    label: 'Generator C',
+    owned: 0,
+    delay: 3,
+    cost: {
+      base: 200,
+      rate: 1.07,
+    },
+    output: {
+      base: 1,
+      current: 0,
     },
   },
 };
+
+// set `next` value for cursor `cost` and `output`
+state.cursor.cost.next = state.cursor.cost.base;
+state.cursor.output.next = state.cursor.output.base;
+
+// set `next` value for generators `cost` and `output`
+Object.keys(state.generators).forEach(id => {
+  const generator = state.generators[id];
+  generator.cost.next = generator.cost.base;
+  generator.output.next = generator.output.base;
+});
 
 /** Elements. */
 const elements = {
@@ -85,6 +91,7 @@ const elements = {
   store: document.getElementById('store'),
 };
 
+// add generators to table
 Object.keys(state.generators).forEach(id => {
   const generatorNode = elements.cursor.cloneNode(true);
   generatorNode.id = id;
