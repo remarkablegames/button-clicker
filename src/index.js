@@ -95,7 +95,10 @@ const elements = {
 Object.keys(state.generators).forEach(id => {
   const generatorNode = elements.cursor.cloneNode(true);
   generatorNode.id = id;
-  generatorNode.querySelector(BUTTON).innerText = state.generators[id].label;
+  const button = generatorNode.querySelector(BUTTON);
+  const { label } = state.generators[id];
+  button.title = label;
+  button.innerText = label;
   elements.store.appendChild(generatorNode);
 });
 
