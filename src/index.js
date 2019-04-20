@@ -8,17 +8,15 @@ const BUTTON = 'button';
 /** State. */
 const state = {};
 
-// clicks
 state.clicks = {
   current: 0,
   total: 0,
 };
 
-// cursor
 state.cursor = {
   owned: 1,
   cost: {
-    base: 50,
+    base: 100,
     rate: 2,
   },
   output: {
@@ -27,14 +25,14 @@ state.cursor = {
   },
 };
 
-// generators
+/** @see {@link https://coderpatsy.bitbucket.io/cookies/cookies.html} */
 state.generators = {
   generatorA: {
     label: 'Generator A',
     owned: 0,
     delay: 10,
     cost: {
-      base: 25,
+      base: 15,
       rate: 1.15,
     },
     output: {
@@ -46,10 +44,10 @@ state.generators = {
   generatorB: {
     label: 'Generator B',
     owned: 0,
-    delay: 5,
+    delay: 1,
     cost: {
       base: 100,
-      rate: 1.1,
+      rate: 1.15,
     },
     output: {
       base: 1,
@@ -60,13 +58,195 @@ state.generators = {
   generatorC: {
     label: 'Generator C',
     owned: 0,
-    delay: 3,
+    delay: 1,
     cost: {
-      base: 200,
-      rate: 1.07,
+      base: 11e2, // 1,100
+      rate: 1.15,
     },
     output: {
-      base: 1,
+      base: 8,
+      current: 0,
+    },
+  },
+
+  generatorD: {
+    label: 'Generator D',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 12e3, // 12,000
+      rate: 1.15,
+    },
+    output: {
+      base: 47,
+      current: 0,
+    },
+  },
+
+  generatorE: {
+    label: 'Generator E',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 13e4, // 130,000
+      rate: 1.15,
+    },
+    output: {
+      base: 260,
+      current: 0,
+    },
+  },
+
+  generatorF: {
+    label: 'Generator F',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 14e5, // 1,400,000
+      rate: 1.15,
+    },
+    output: {
+      base: 14e2, // 1,400
+      current: 0,
+    },
+  },
+
+  generatorG: {
+    label: 'Generator G',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 2e7, // 20,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 78e2, // 7,800
+      current: 0,
+    },
+  },
+
+  generatorH: {
+    label: 'Generator H',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 33e7, // 330,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 44e3, // 44,000
+      current: 0,
+    },
+  },
+
+  generatorI: {
+    label: 'Generator I',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 51e8, // 5,100,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 26e4, // 260,000
+      current: 0,
+    },
+  },
+
+  generatorJ: {
+    label: 'Generator J',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 75e9, // 75,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 16e5, // 1,600,000
+      current: 0,
+    },
+  },
+
+  generatorK: {
+    label: 'Generator K',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 1e12, // 1,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 1e5, // 10,000,000
+      current: 0,
+    },
+  },
+
+  generatorL: {
+    label: 'Generator L',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 14e12, // 14,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 65e6, // 65,000,000
+      current: 0,
+    },
+  },
+
+  generatorM: {
+    label: 'Generator M',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 17e13, // 170,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 43e7, // 430,000,000
+      current: 0,
+    },
+  },
+
+  generatorN: {
+    label: 'Generator N',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 21e14, // 2,100,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 29e8, // 2,900,000,000
+      current: 0,
+    },
+  },
+
+  generatorO: {
+    label: 'Generator O',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 26e15, // 26,000,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 21e9, // 21,000,000,000
+      current: 0,
+    },
+  },
+
+  generatorP: {
+    label: 'Generator P',
+    owned: 0,
+    delay: 1,
+    cost: {
+      base: 31e16, // 310,000,000,000,000,000
+      rate: 1.15,
+    },
+    output: {
+      base: 15e10, // 150,000,000,000
       current: 0,
     },
   },
