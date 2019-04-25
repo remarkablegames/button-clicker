@@ -5,6 +5,14 @@ import './index.css';
 const CLICK = 'click';
 const BUTTON = 'button';
 
+/** Elements. */
+const elements = {
+  button: document.getElementById('button'),
+  counter: document.getElementById('counter'),
+  cursor: document.getElementById('upgrade'),
+  store: document.getElementById('store'),
+};
+
 /** State. */
 const state = {};
 
@@ -256,30 +264,19 @@ state.generators = {
 state.cursor.cost.next = state.cursor.cost.base;
 state.cursor.output.next = state.cursor.output.base;
 
-// set `next` value for generators `cost` and `output`
 Object.keys(state.generators).forEach(id => {
+  // set `next` value for generator `cost` and `output`
   const generator = state.generators[id];
   generator.cost.next = generator.cost.base;
   generator.output.next = generator.output.base;
-});
 
-/** Elements. */
-const elements = {
-  button: document.getElementById('button'),
-  counter: document.getElementById('counter'),
-  cursor: document.getElementById('upgrade'),
-  store: document.getElementById('store'),
-};
-
-// add generators to table
-Object.keys(state.generators).forEach(id => {
-  const generatorNode = elements.cursor.cloneNode(true);
-  generatorNode.id = id;
-  const button = generatorNode.querySelector(BUTTON);
-  const { label } = state.generators[id];
-  button.title = label;
-  button.innerText = label;
-  elements.store.appendChild(generatorNode);
+  // append generator to table
+  const generatorElement = elements.cursor.cloneNode(true);
+  generatorElement.id = id;
+  const button = generatorElement.querySelector(BUTTON);
+  button.title = generator.label;
+  button.innerText = generator.label;
+  elements.store.appendChild(generatorElement);
 });
 
 /** Helpers. */
@@ -430,12 +427,12 @@ const actions = {
 
 /** Events. */
 
-// click button
+// listen for button click
 elements.button.addEventListener(CLICK, () => {
   actions.increment(state.cursor.output.current);
 });
 
-// upgrade cursor
+// listen for cursor upgrade
 elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks.current >= state.cursor.cost.next) {
     actions.decrement(state.cursor.cost.next);
@@ -443,7 +440,7 @@ elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   }
 });
 
-// purchase generator
+// listen for generator purchase
 Object.keys(state.generators).forEach(id => {
   const generator = state.generators[id];
   const generatorRow = getElementById(id);
