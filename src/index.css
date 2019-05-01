@@ -1,11 +1,23 @@
 body {
+  border: 0;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   margin: 0;
-  padding: 50px;
+  padding: 0;
+}
+
+header,
+main {
+  padding: 24px 36px;
 }
 
 main {
   display: block;
+}
+
+header {
+  background: #111;
+  color: #eee;
+  font-family: Consolas, monospace;
 }
 
 table {
