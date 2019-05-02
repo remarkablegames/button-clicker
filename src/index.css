@@ -38,3 +38,10 @@ td {
 td:first-child {
   text-align: left;
 }
+
+.github-corner > svg {
+  color: #111;
+  fill: #fff;
+  height: 64px;
+  width: 64px;
+}
