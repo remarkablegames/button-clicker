@@ -10,6 +10,7 @@ const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
   cursor: document.getElementById('upgrade'),
+  message: document.getElementById('message'),
   store: document.getElementById('store'),
 };
 
@@ -258,6 +259,31 @@ state.generators = {
       current: 0,
     },
   },
+};
+
+state.messages = {
+  1: 'The clicking has commenced...',
+  10: 'The button has been clicked ten times.',
+  100: 'The button has been clicked one hundred times.',
+  1000: 'The button has been clicked one thousand times.',
+  10000: 'The button has been clicked ten thousand times.',
+  100000: 'The button has been clicked one hundred thousand times.',
+  1000000: 'The button has been clicked one million times.',
+  10000000: 'The button has been clicked ten million times.',
+  100000000: 'The button has been clicked one hundred million times.',
+  1000000000: 'The button has been clicked one billion times.',
+  10000000000: 'The button has been clicked ten billion times.',
+  100000000000: 'The button has been clicked one hundred billion times.',
+  1000000000000: 'The button has been clicked one trillion times.',
+  10000000000000: 'The button has been clicked ten trillion times.',
+  100000000000000: 'The button has been clicked one hundred trillion times.',
+  1000000000000000: 'The button has been clicked one quadrillion times.',
+  10000000000000000: 'The button has been clicked ten quadrillion times.',
+  100000000000000000: 'The button has been clicked one hundred quadrillion times.',
+  1000000000000000000: 'The button has been clicked one quitillion times.',
+  10000000000000000000: 'The button has been clicked ten quitillion times.',
+  100000000000000000000: 'The button has been clicked one hundred quitillion times.',
+  1000000000000000000000: 'The button has been clicked one sextillion times.',
 };
 
 // set `next` value for cursor `cost` and `output`
