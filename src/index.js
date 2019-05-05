@@ -393,6 +393,42 @@ const views = {
       views.renderGenerator(id);
     });
   },
+
+  /**
+   * @param {String} [text]
+   */
+  renderMessage: function(text) {
+    var total = state.clicks.total;
+    var message;
+
+    if (text) {
+      message = text;
+    } else {
+      // check for exact match in messages table
+      if (state.messages[total]) {
+        message = state.messages[total];
+        delete state.messages[total];
+      } else {
+        // otherwise compare number of first message
+        for (var key in state.messages) {
+          if (total >= key) {
+            message = state.messages[key];
+            delete state.messages[key];
+          }
+          break;
+        }
+      }
+    }
+
+    if (!message) {
+      return;
+    }
+
+    message = message.toLocaleString();
+    if (message !== elements.message.innerText) {
+      elements.message.innerText = message;
+    }
+  },
 };
 
 /** Actions. */
@@ -406,6 +442,7 @@ const actions = {
     clicks.current += number;
     if (!skipTotal) {
       clicks.total += number;
+      views.renderMessage();
     }
 
     views.renderCounter();
