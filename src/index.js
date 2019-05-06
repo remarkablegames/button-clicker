@@ -38,6 +38,7 @@ state.cursor = {
 state.generators = {
   generatorA: {
     label: 'Generator A',
+    message: 'Generator A is clicking the button.',
     owned: 0,
     delay: 10,
     cost: {
@@ -52,6 +53,7 @@ state.generators = {
 
   generatorB: {
     label: 'Generator B',
+    message: 'Generator B is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -66,6 +68,7 @@ state.generators = {
 
   generatorC: {
     label: 'Generator C',
+    message: 'Generator C is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -80,6 +83,7 @@ state.generators = {
 
   generatorD: {
     label: 'Generator D',
+    message: 'Generator D is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -94,6 +98,7 @@ state.generators = {
 
   generatorE: {
     label: 'Generator E',
+    message: 'Generator E is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -108,6 +113,7 @@ state.generators = {
 
   generatorF: {
     label: 'Generator F',
+    message: 'Generator F is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -122,6 +128,7 @@ state.generators = {
 
   generatorG: {
     label: 'Generator G',
+    message: 'Generator G is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -136,6 +143,7 @@ state.generators = {
 
   generatorH: {
     label: 'Generator H',
+    message: 'Generator H is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -150,6 +158,7 @@ state.generators = {
 
   generatorI: {
     label: 'Generator I',
+    message: 'Generator I is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -164,6 +173,7 @@ state.generators = {
 
   generatorJ: {
     label: 'Generator J',
+    message: 'Generator J is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -178,6 +188,7 @@ state.generators = {
 
   generatorK: {
     label: 'Generator K',
+    message: 'Generator K is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -192,6 +203,7 @@ state.generators = {
 
   generatorL: {
     label: 'Generator L',
+    message: 'Generator L is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -206,6 +218,7 @@ state.generators = {
 
   generatorM: {
     label: 'Generator M',
+    message: 'Generator M is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -220,6 +233,7 @@ state.generators = {
 
   generatorN: {
     label: 'Generator N',
+    message: 'Generator N is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -234,6 +248,7 @@ state.generators = {
 
   generatorO: {
     label: 'Generator O',
+    message: 'Generator O is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
@@ -248,6 +263,7 @@ state.generators = {
 
   generatorP: {
     label: 'Generator P',
+    message: 'Generator P is clicking the button.',
     owned: 0,
     delay: 1,
     cost: {
