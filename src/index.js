@@ -23,6 +23,7 @@ state.clicks = {
 };
 
 state.cursor = {
+  message: 'Upgraded cursor click power.',
   owned: 1,
   cost: {
     base: 100,
@@ -506,20 +507,22 @@ const actions = {
 
 /** Events. */
 
-// listen for button click
+// button click
 elements.button.addEventListener(CLICK, () => {
   actions.increment(state.cursor.output.current);
 });
 
-// listen for cursor upgrade
+// cursor upgrade
 elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
   if (state.clicks.current >= state.cursor.cost.next) {
-    actions.decrement(state.cursor.cost.next);
+    const { cursor } = state;
+    actions.decrement(cursor.cost.next);
     actions.updateCursor();
+    views.renderMessage(cursor.message);
   }
 });
 
-// listen for generator purchase
+// generator purchase
 Object.keys(state.generators).forEach(id => {
   const generator = state.generators[id];
   const generatorRow = getElementById(id);
@@ -541,6 +544,10 @@ Object.keys(state.generators).forEach(id => {
           },
         };
         setInterval(generator.interval.callback, generator.delay * 1000);
+      }
+
+      if (generator.message) {
+        views.renderMessage(generator.message);
       }
     }
   });
