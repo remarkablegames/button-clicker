@@ -197,7 +197,7 @@ state.generators = {
       rate: 1.15,
     },
     output: {
-      base: 1e5, // 10,000,000
+      base: 1e7, // 10,000,000
       current: 0,
     },
   },
