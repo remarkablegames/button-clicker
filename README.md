@@ -11,12 +11,18 @@ Games built using this template:
 - [Button Clicker](https://remarkablegames.org/button-clicker)
 - [Repl.it Clicker](https://repl.it/talk/challenge/replit-clicker/13259)
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/get-npm) or [Yarn](https://yarnpkg.com/lang/en/docs/install/)
+
 ## Install
 
 Clone repository:
 
 ```sh
 $ git clone https://github.com/remarkablegames/button-clicker.git
+$ cd button-clicker
 ```
 
 Install dependencies:
@@ -25,7 +31,7 @@ Install dependencies:
 # with npm
 $ npm install
 
-# or with yarn
+# with yarn
 $ yarn
 ```
 
@@ -37,7 +43,7 @@ Start development server:
 # with npm
 $ npm start
 
-# or with yarn
+# with yarn
 $ yarn start
 ```
 
@@ -47,7 +53,7 @@ Build production artifacts:
 # with npm
 $ npm run build
 
-# or with yarn
+# with yarn
 $ yarn build
 ```
 
@@ -59,7 +65,7 @@ Release with [standard-version](https://github.com/conventional-changelog/standa
 # with npm
 $ npm run release
 
-# or with yarn
+# with yarn
 $ yarn release
 ```
 
@@ -71,7 +77,7 @@ Deploy to [GitHub Pages](https://pages.github.com/):
 # with npm
 $ npm run deploy
 
-# or with yarn
+# with yarn
 $ yarn deploy
 ```
 
