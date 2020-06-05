@@ -10,7 +10,8 @@
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "release": "standard-version --no-verify",
-    "start": "web-scripts start"
+    "start": "web-scripts start",
+    "test:ci": "CI=true npm test -- --passWithNoTests"
   },
   "devDependencies": {
     "@commitlint/cli": "7.5.2",
