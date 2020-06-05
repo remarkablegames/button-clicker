@@ -414,7 +414,7 @@ const views = {
   /**
    * @param {String} [text]
    */
-  renderMessage: function(text) {
+  renderMessage: function (text) {
     var total = state.clicks.total;
     var message;
 
