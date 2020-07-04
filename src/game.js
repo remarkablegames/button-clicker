@@ -26,6 +26,8 @@ state.cursor = {
     current: 1,
   },
 };
+state.cursor.cost.next = state.cursor.cost.base;
+state.cursor.output.next = state.cursor.output.base;
 
 /** @see {@link https://coderpatsy.bitbucket.io/cookies/cookies.html} */
 state.generators = {
@@ -294,10 +296,6 @@ state.messages = {
   100000000000000000000: 'The button has been clicked one hundred quitillion times.',
   1000000000000000000000: 'The button has been clicked one sextillion times.',
 };
-
-// set `next` value for cursor `cost` and `output`
-state.cursor.cost.next = state.cursor.cost.base;
-state.cursor.output.next = state.cursor.output.base;
 
 Object.keys(state.generators).forEach(id => {
   // set `next` value for generator `cost` and `output`
