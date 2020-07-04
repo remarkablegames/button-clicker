@@ -36,6 +36,7 @@ git grep -l 'Button Clicker' | xargs sed -i '' -e 's/Button Clicker/My Clicker/g
 
 Update the files:
 
+- [ ] `.env.production`
 - [ ] `README.md`
 - [ ] `package.json`
 - [ ] `public/index.html`
