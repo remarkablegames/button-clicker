@@ -411,9 +411,9 @@ const views = {
   /**
    * @param {String} [text]
    */
-  renderMessage: function (text) {
-    var total = state.clicks.total;
-    var message;
+  renderMessage: text => {
+    const { total } = state.clicks;
+    let message;
 
     if (text) {
       message = text;
@@ -424,7 +424,7 @@ const views = {
         delete state.messages[total];
       } else {
         // otherwise compare number of first message
-        for (var key in state.messages) {
+        for (const key in state.messages) {
           if (total >= key) {
             message = state.messages[key];
             delete state.messages[key];
