@@ -1,15 +1,5 @@
 import { EVENT_CLICK, SELECTOR_BUTTON } from './constants';
-
-/** Elements. */
-const elements = {
-  button: document.getElementById('button'),
-  counter: document.getElementById('counter'),
-  cursor: document.getElementById('cursor'),
-  message: document.getElementById('message'),
-  store: document.getElementById('store'),
-};
-
-elements.cursorButton = elements.cursor.querySelector(SELECTOR_BUTTON);
+import { elements } from './helpers';
 
 /** State. */
 const state = {};
