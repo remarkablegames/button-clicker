@@ -75,15 +75,29 @@
       </table>
     </main>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=%WEB_APP_GOOGLE_ANALYTICS_TRACKING_ID%"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', '%WEB_APP_GOOGLE_ANALYTICS_TRACKING_ID%');
+    </script>
+
     <!--
       GitHub Corners. See https://github.com/remarkablemark/github-corners
     -->
     <script
-      src="https://unpkg.com/github-corners/dist/embed.min.js"
-      data-href="https://github.com/remarkablegames/button-clicker"
-      data-target="_blank"
       async
       defer
+      data-href="https://github.com/remarkablegames/button-clicker"
+      data-target="_blank"
+      src="https://unpkg.com/github-corners/dist/embed.min.js"
     ></script>
 
     <!--
