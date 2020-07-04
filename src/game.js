@@ -6,7 +6,7 @@ const BUTTON = 'button';
 const elements = {
   button: document.getElementById('button'),
   counter: document.getElementById('counter'),
-  cursor: document.getElementById('upgrade'),
+  cursor: document.getElementById('cursor'),
   message: document.getElementById('message'),
   store: document.getElementById('store'),
 };
