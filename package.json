@@ -14,6 +14,7 @@
     "test": "web-scripts test",
     "test:ci": "CI=true npm test -- --passWithNoTests"
   },
+  "homepage": "https://remarkablegames.org/button-clicker/",
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
