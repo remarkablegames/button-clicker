@@ -1,5 +1,10 @@
 import { EVENT_CLICK, SELECTOR_BUTTON } from './constants';
-import { elements } from './helpers';
+import {
+  calculateNextCost,
+  elements,
+  formatGeneratorOutput,
+  getElementById,
+} from './helpers';
 
 /** State. */
 const state = {};
@@ -308,43 +313,6 @@ Object.keys(state.generators).forEach(id => {
   button.innerText = generator.label;
   elements.store.appendChild(generatorElement);
 });
-
-/** Helpers. */
-
-/**
- * @param  {Number} base
- * @param  {Number} rate
- * @param  {Number} owned
- * @return {Number}
- */
-const calculateNextCost = (base, rate, owned) => {
-  return Math.floor(base * Math.pow(rate, owned));
-};
-
-/**
- * @param  {String}      id
- * @return {HTMLElement}
- */
-const getElementById = id => {
-  return elements[id]
-    ? elements[id]
-    : (elements[id] = document.getElementById(id));
-};
-
-/**
- * @param  {Number} clicks
- * @param  {Number} seconds
- * @return {String}
- */
-const formatGeneratorOutput = (clicks, seconds) => {
-  return [
-    clicks.toLocaleString(),
-    clicks === 1 ? 'click' : 'clicks',
-    'per',
-    seconds.toLocaleString(),
-    seconds === 1 ? 'second' : 'seconds',
-  ].join(' ');
-};
 
 /** Views. */
 const views = {
