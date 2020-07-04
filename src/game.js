@@ -11,6 +11,8 @@ const elements = {
   store: document.getElementById('store'),
 };
 
+elements.cursorButton = elements.cursor.querySelector('button');
+
 /** State. */
 const state = {};
 
@@ -460,7 +462,7 @@ const actions = {
     }
 
     views.renderCounter();
-    const cursorButton = elements.cursor.querySelector(BUTTON);
+    const { cursorButton } = elements;
     cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
