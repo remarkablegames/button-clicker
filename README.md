@@ -139,19 +139,25 @@ npm test
 
 ## Build
 
-You can build the production app locally:
+You can build the production game locally with:
 
 ```sh
 npm run build
+```
 
-# if your app is hosted at a subdirectory
-mv build $(node -p "require('./package').name") # web-app-template
+Rename the build directory if your game is hosted at a subdirectory:
 
-# if your app is hosted at the root
+```sh
+mv build button-clicker
+```
+
+Or enter the build directory if your game is hosted at the root:
+
+```sh
 cd build
 ```
 
-Start the server:
+Start a static file server:
 
 ```sh
 python -m SimpleHTTPServer
@@ -159,20 +165,21 @@ python -m SimpleHTTPServer
 
 Stop the server with `Ctrl + C`.
 
-View the app in a new Terminal tab or window:
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+
+> If your game is hosted at a subdirectory, open the folder in the directory listing.
+
+Once you're done, clean up the build directory.
+
+If your game is hosted at a subdirectory:
 
 ```sh
-open http://localhost:8000
-# if your app is hosted at a subdirectory, make sure to open the directory
+rm -rf button-clicker
 ```
 
-Don't forget to clean up the build directory after you're done:
+Or if your game is hosted at the root:
 
 ```sh
-# if your app is hosted at a subdirectory
-rm -rf $(node -p "require('./package').name") # web-app-template
-
-# if your app is hosted at the root
 rm -rf build
 ```
 
