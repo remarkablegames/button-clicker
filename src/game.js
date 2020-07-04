@@ -29,9 +29,9 @@ state.cursor = {
 
 /** @see {@link https://coderpatsy.bitbucket.io/cookies/cookies.html} */
 state.generators = {
-  generatorA: {
-    label: 'Generator A',
-    message: 'Purchased Generator A.',
+  generator1: {
+    label: 'Generator 1',
+    message: 'Purchased Generator 1.',
     owned: 0,
     delay: 10,
     cost: {
@@ -44,9 +44,9 @@ state.generators = {
     },
   },
 
-  generatorB: {
-    label: 'Generator B',
-    message: 'Purchased Generator B.',
+  generator2: {
+    label: 'Generator 2',
+    message: 'Purchased Generator 2.',
     owned: 0,
     delay: 1,
     cost: {
@@ -59,9 +59,9 @@ state.generators = {
     },
   },
 
-  generatorC: {
-    label: 'Generator C',
-    message: 'Purchased Generator C.',
+  generator3: {
+    label: 'Generator 3',
+    message: 'Purchased Generator 3.',
     owned: 0,
     delay: 1,
     cost: {
@@ -74,9 +74,9 @@ state.generators = {
     },
   },
 
-  generatorD: {
-    label: 'Generator D',
-    message: 'Purchased Generator D.',
+  generator4: {
+    label: 'Generator 4',
+    message: 'Purchased Generator 4.',
     owned: 0,
     delay: 1,
     cost: {
@@ -89,9 +89,9 @@ state.generators = {
     },
   },
 
-  generatorE: {
-    label: 'Generator E',
-    message: 'Purchased Generator E.',
+  generator5: {
+    label: 'Generator 5',
+    message: 'Purchased Generator 5.',
     owned: 0,
     delay: 1,
     cost: {
@@ -104,9 +104,9 @@ state.generators = {
     },
   },
 
-  generatorF: {
-    label: 'Generator F',
-    message: 'Purchased Generator F.',
+  generator6: {
+    label: 'Generator 6',
+    message: 'Purchased Generator 6.',
     owned: 0,
     delay: 1,
     cost: {
@@ -119,9 +119,9 @@ state.generators = {
     },
   },
 
-  generatorG: {
-    label: 'Generator G',
-    message: 'Purchased Generator G.',
+  generator7: {
+    label: 'Generator 7',
+    message: 'Purchased Generator 7.',
     owned: 0,
     delay: 1,
     cost: {
@@ -134,9 +134,9 @@ state.generators = {
     },
   },
 
-  generatorH: {
-    label: 'Generator H',
-    message: 'Purchased Generator H.',
+  generator8: {
+    label: 'Generator 8',
+    message: 'Purchased Generator 8.',
     owned: 0,
     delay: 1,
     cost: {
@@ -149,9 +149,9 @@ state.generators = {
     },
   },
 
-  generatorI: {
-    label: 'Generator I',
-    message: 'Purchased Generator I.',
+  generator9: {
+    label: 'Generator 9',
+    message: 'Purchased Generator 9.',
     owned: 0,
     delay: 1,
     cost: {
@@ -164,9 +164,9 @@ state.generators = {
     },
   },
 
-  generatorJ: {
-    label: 'Generator J',
-    message: 'Purchased Generator J.',
+  generator10: {
+    label: 'Generator 10',
+    message: 'Purchased Generator 10.',
     owned: 0,
     delay: 1,
     cost: {
@@ -179,9 +179,9 @@ state.generators = {
     },
   },
 
-  generatorK: {
-    label: 'Generator K',
-    message: 'Purchased Generator K.',
+  generator11: {
+    label: 'Generator 11',
+    message: 'Purchased Generator 11.',
     owned: 0,
     delay: 1,
     cost: {
@@ -194,9 +194,9 @@ state.generators = {
     },
   },
 
-  generatorL: {
-    label: 'Generator L',
-    message: 'Purchased Generator L.',
+  generator12: {
+    label: 'Generator 12',
+    message: 'Purchased Generator 12.',
     owned: 0,
     delay: 1,
     cost: {
@@ -209,9 +209,9 @@ state.generators = {
     },
   },
 
-  generatorM: {
-    label: 'Generator M',
-    message: 'Purchased Generator M.',
+  generator13: {
+    label: 'Generator 13',
+    message: 'Purchased Generator 13.',
     owned: 0,
     delay: 1,
     cost: {
@@ -224,9 +224,9 @@ state.generators = {
     },
   },
 
-  generatorN: {
-    label: 'Generator N',
-    message: 'Purchased Generator N.',
+  generator14: {
+    label: 'Generator 14',
+    message: 'Purchased Generator 14.',
     owned: 0,
     delay: 1,
     cost: {
@@ -239,9 +239,9 @@ state.generators = {
     },
   },
 
-  generatorO: {
-    label: 'Generator O',
-    message: 'Purchased Generator O.',
+  generator15: {
+    label: 'Generator 15',
+    message: 'Purchased Generator 15.',
     owned: 0,
     delay: 1,
     cost: {
@@ -254,9 +254,9 @@ state.generators = {
     },
   },
 
-  generatorP: {
-    label: 'Generator P',
-    message: 'Purchased Generator P.',
+  generator16: {
+    label: 'Generator 16',
+    message: 'Purchased Generator 16.',
     owned: 0,
     delay: 1,
     cost: {
