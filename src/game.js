@@ -1,6 +1,6 @@
 /** Constants. */
-const CLICK = 'click';
-const BUTTON = 'button';
+const EVENT_CLICK = 'click';
+const SELECTOR_BUTTON = 'button';
 
 /** Elements. */
 const elements = {
@@ -11,7 +11,7 @@ const elements = {
   store: document.getElementById('store'),
 };
 
-elements.cursorButton = elements.cursor.querySelector('button');
+elements.cursorButton = elements.cursor.querySelector(SELECTOR_BUTTON);
 
 /** State. */
 const state = {};
@@ -315,7 +315,7 @@ Object.keys(state.generators).forEach(id => {
   // append generator to table
   const generatorElement = elements.cursor.cloneNode(true);
   generatorElement.id = id;
-  const button = generatorElement.querySelector(BUTTON);
+  const button = generatorElement.querySelector(SELECTOR_BUTTON);
   button.title = generator.label;
   button.innerText = generator.label;
   elements.store.appendChild(generatorElement);
@@ -468,7 +468,7 @@ const actions = {
     const { generators } = state;
     Object.keys(generators).forEach(id => {
       const generatorRow = getElementById(id);
-      const generatorButton = generatorRow.querySelector(BUTTON);
+      const generatorButton = generatorRow.querySelector(SELECTOR_BUTTON);
       generatorButton.disabled = clicks.current < generators[id].cost.next;
     });
   },
@@ -507,49 +507,53 @@ const actions = {
 /** Events. */
 
 // button click
-elements.button.addEventListener(CLICK, () => {
+elements.button.addEventListener(EVENT_CLICK, () => {
   actions.increment(state.cursor.output.current);
 });
 
 // cursor upgrade
-elements.cursor.querySelector(BUTTON).addEventListener(CLICK, () => {
-  if (state.clicks.current >= state.cursor.cost.next) {
-    const { cursor } = state;
-    actions.decrement(cursor.cost.next);
-    actions.updateCursor();
-    views.renderMessage(cursor.message);
-  }
-});
+elements.cursor
+  .querySelector(SELECTOR_BUTTON)
+  .addEventListener(EVENT_CLICK, () => {
+    if (state.clicks.current >= state.cursor.cost.next) {
+      const { cursor } = state;
+      actions.decrement(cursor.cost.next);
+      actions.updateCursor();
+      views.renderMessage(cursor.message);
+    }
+  });
 
 // generator purchase
 Object.keys(state.generators).forEach(id => {
   const generator = state.generators[id];
   const generatorRow = getElementById(id);
 
-  generatorRow.querySelector(BUTTON).addEventListener(CLICK, () => {
-    if (state.clicks.current >= generator.cost.next) {
-      actions.decrement(generator.cost.next);
-      actions.updateGenerator(id);
+  generatorRow
+    .querySelector(SELECTOR_BUTTON)
+    .addEventListener(EVENT_CLICK, () => {
+      if (state.clicks.current >= generator.cost.next) {
+        actions.decrement(generator.cost.next);
+        actions.updateGenerator(id);
 
-      if (generator.interval) {
-        generator.interval.callback = () => {
-          actions.increment(generator.output.current);
-        };
-      } else {
-        generator.interval = {
-          output: generator.output.current,
-          callback: () => {
+        if (generator.interval) {
+          generator.interval.callback = () => {
             actions.increment(generator.output.current);
-          },
-        };
-        setInterval(generator.interval.callback, generator.delay * 1000);
-      }
+          };
+        } else {
+          generator.interval = {
+            output: generator.output.current,
+            callback: () => {
+              actions.increment(generator.output.current);
+            },
+          };
+          setInterval(generator.interval.callback, generator.delay * 1000);
+        }
 
-      if (generator.message) {
-        views.renderMessage(generator.message);
+        if (generator.message) {
+          views.renderMessage(generator.message);
+        }
       }
-    }
-  });
+    });
 });
 
 /** Bootstrap. */
