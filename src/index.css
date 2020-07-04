@@ -40,8 +40,8 @@ td:first-child {
 }
 
 .github-corner > svg {
-  color: #111;
-  fill: #fff;
+  color: #151513 !important;
+  fill: #fafafa !important;
   height: 64px;
   width: 64px;
 }
