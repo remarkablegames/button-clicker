@@ -1,6 +1,4 @@
-/** Constants. */
-const EVENT_CLICK = 'click';
-const SELECTOR_BUTTON = 'button';
+import { EVENT_CLICK, SELECTOR_BUTTON } from './constants';
 
 /** Elements. */
 const elements = {
