@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
     <title>Button Clicker | remarkablegames</title>
-    <meta name="description" content="A button clicker idle game.">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Button clicker idle game." />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000" />
 
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -31,6 +34,7 @@
   </head>
 
   <body>
+    <!-- prettier-ignore -->
     <!--[if lte IE 9]><p>You're using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com" target="_blank" rel="noopener noreferrer">upgrade your browser</a> to improve your experience and security.</p><![endif]-->
 
     <noscript>
@@ -60,7 +64,8 @@
         <tbody id="store">
           <tr id="upgrade">
             <td>
-              <button disabled title="Cursor">Cursor</button> <span class="owned"></span>
+              <button disabled title="Cursor">Cursor</button>&nbsp;
+              <span class="owned"></span>
             </td>
             <td class="cost"></td>
             <td class="output-current"></td>
@@ -73,9 +78,17 @@
     <!--
       GitHub Corners. See https://github.com/remarkablemark/github-corners
     -->
-    <script src="https://unpkg.com/github-corners/dist/embed.min.js" data-href="https://github.com/remarkablegames/button-clicker" data-target="_blank" async defer></script>
+    <script
+      src="https://unpkg.com/github-corners/dist/embed.min.js"
+      data-href="https://github.com/remarkablegames/button-clicker"
+      data-target="_blank"
+      async
+      defer
+    ></script>
 
-    <!-- Polyfill -->
+    <!--
+      Polyfill. See https://polyfill.io/v3/
+    -->
     <script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Array.prototype.forEach,Object.keys,document.querySelector"></script>
 
     <!--
