@@ -41,7 +41,6 @@ Update the files:
 - [ ] `package.json`
 - [ ] `public/index.html`
 - [ ] `public/manifest.json`
-- [ ] `src/index.js`
 
 Install the dependencies:
 
