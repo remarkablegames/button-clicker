@@ -365,9 +365,9 @@ const views = {
   },
 
   /**
-   * @param {String} [text]
+   * @param {String} [text='']
    */
-  renderMessage: text => {
+  renderMessage: (text = '') => {
     const { total } = state.clicks;
     let message;
 
@@ -405,9 +405,9 @@ const views = {
 const actions = {
   /**
    * @param {Number}  number
-   * @param {Boolean} [skipTotal]
+   * @param {Boolean} [skipTotal=false]
    */
-  increment: (number, skipTotal) => {
+  increment: (number, skipTotal = false) => {
     const { clicks } = state;
     clicks.current += number;
     if (!skipTotal) {
@@ -416,8 +416,7 @@ const actions = {
     }
 
     views.renderCounter();
-    const { cursorButton } = elements;
-    cursorButton.disabled = clicks.current < state.cursor.cost.next;
+    elements.cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
     Object.keys(generators).forEach(id => {
