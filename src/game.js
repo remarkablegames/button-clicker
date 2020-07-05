@@ -465,16 +465,14 @@ elements.button.addEventListener(EVENT_CLICK, () => {
 });
 
 // cursor upgrade
-elements.cursor
-  .querySelector(SELECTOR_BUTTON)
-  .addEventListener(EVENT_CLICK, () => {
-    if (state.clicks.current >= state.cursor.cost.next) {
-      const { cursor } = state;
-      actions.decrement(cursor.cost.next);
-      actions.updateCursor();
-      views.renderMessage(cursor.message);
-    }
-  });
+elements.cursorButton.addEventListener(EVENT_CLICK, () => {
+  if (state.clicks.current >= state.cursor.cost.next) {
+    const { cursor } = state;
+    actions.decrement(cursor.cost.next);
+    actions.updateCursor();
+    views.renderMessage(cursor.message);
+  }
+});
 
 // generator purchase
 Object.keys(state.generators).forEach(id => {
