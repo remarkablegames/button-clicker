@@ -59,7 +59,7 @@ Make your first commit:
 
 ```sh
 git add .
-git commit -m "feat: initialize project from phaser-template"
+git commit -m "feat: initialize game from button-clicker"
 ```
 
 > Commit messages follow the [Conventional Commits](https://conventionalcommits.org/) format, which is used during release.
