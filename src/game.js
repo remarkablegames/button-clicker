@@ -492,7 +492,6 @@ Object.keys(state.generators).forEach(id => {
           };
         } else {
           generator.interval = {
-            output: generator.output.current,
             callback: () => {
               actions.increment(generator.output.current);
             },
