@@ -243,7 +243,7 @@ export const generators = {
   },
 };
 
-Object.keys(generators).forEach(id => {
+Object.keys(generators).forEach((id) => {
   // set `next` value for generator `cost` and `output`
   const generator = generators[id];
   generator.cost.next = generator.cost.base;

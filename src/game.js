@@ -7,7 +7,7 @@ import {
 } from './helpers';
 import * as state from './state';
 
-Object.keys(state.generators).forEach(id => {
+Object.keys(state.generators).forEach((id) => {
   // append generator to table
   const generator = state.generators[id];
   const generatorElement = elements.cursor.cloneNode(true);
@@ -30,9 +30,8 @@ const views = {
     cursorRow.querySelector('.owned').innerText = (
       cursor.owned - 1
     ).toLocaleString();
-    cursorRow.querySelector(
-      '.cost'
-    ).innerText = cursor.cost.next.toLocaleString();
+    cursorRow.querySelector('.cost').innerText =
+      cursor.cost.next.toLocaleString();
     cursorRow.querySelector(
       '.output-current'
     ).innerText = `${cursor.output.current.toLocaleString()} per click`;
@@ -44,28 +43,21 @@ const views = {
   /**
    * @param {String} id
    */
-  renderGenerator: id => {
+  renderGenerator: (id) => {
     const generator = state.generators[id];
     const generatorRow = getElementById(id);
-    generatorRow.querySelector(
-      '.owned'
-    ).innerText = generator.owned.toLocaleString();
-    generatorRow.querySelector(
-      '.cost'
-    ).innerText = generator.cost.next.toLocaleString();
-    generatorRow.querySelector(
-      '.output-current'
-    ).innerText = formatGeneratorOutput(
-      generator.output.current,
-      generator.delay
-    );
-    generatorRow.querySelector(
-      '.output-next'
-    ).innerText = formatGeneratorOutput(generator.output.next, generator.delay);
+    generatorRow.querySelector('.owned').innerText =
+      generator.owned.toLocaleString();
+    generatorRow.querySelector('.cost').innerText =
+      generator.cost.next.toLocaleString();
+    generatorRow.querySelector('.output-current').innerText =
+      formatGeneratorOutput(generator.output.current, generator.delay);
+    generatorRow.querySelector('.output-next').innerText =
+      formatGeneratorOutput(generator.output.next, generator.delay);
   },
 
   renderGenerators: () => {
-    Object.keys(state.generators).forEach(id => {
+    Object.keys(state.generators).forEach((id) => {
       views.renderGenerator(id);
     });
   },
@@ -125,7 +117,7 @@ const actions = {
     elements.cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
-    Object.keys(generators).forEach(id => {
+    Object.keys(generators).forEach((id) => {
       const generatorRow = getElementById(id);
       const generatorButton = generatorRow.querySelector(SELECTOR_BUTTON);
       generatorButton.disabled = clicks.current < generators[id].cost.next;
@@ -135,7 +127,7 @@ const actions = {
   /**
    * @param {Number} clicks
    */
-  decrement: clicks => {
+  decrement: (clicks) => {
     actions.increment(-clicks, true);
   },
 
@@ -152,7 +144,7 @@ const actions = {
   /**
    * @param {String} id
    */
-  updateGenerator: id => {
+  updateGenerator: (id) => {
     const generator = state.generators[id];
     const { cost, output } = generator;
     const owned = ++generator.owned;
@@ -181,7 +173,7 @@ elements.cursorButton.addEventListener(EVENT_CLICK, () => {
 });
 
 // generator purchase
-Object.keys(state.generators).forEach(id => {
+Object.keys(state.generators).forEach((id) => {
   const generator = state.generators[id];
   const generatorRow = getElementById(id);
 

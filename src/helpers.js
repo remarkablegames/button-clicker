@@ -29,7 +29,7 @@ export const calculateNextCost = (base, rate, owned) =>
  * @param {String} id
  * @return {HTMLElement}
  */
-export const getElementById = id =>
+export const getElementById = (id) =>
   elements[id] || (elements[id] = document.getElementById(id));
 
 /**

@@ -9,24 +9,22 @@
     "deploy": "npm run clean && npm run build && gitploy build gh-pages",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
+    "postinstall": "husky install",
     "release": "standard-version --no-verify",
     "start": "web-scripts start",
     "test": "web-scripts test",
     "test:ci": "CI=true npm test -- --passWithNoTests"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@descriptive/web-scripts": "2.0.3",
-    "eslint-plugin-prettier": "^3.3.1",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@descriptive/web-scripts": "3.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "gitploy": "0.1.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
-    "standard-version": "^9.1.0"
-  },
-  "engines": {
-    "node": ">=10"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1",
+    "standard-version": "^9.3.2"
   },
   "private": true,
   "license": "MIT"
