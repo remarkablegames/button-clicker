@@ -11,12 +11,11 @@ The template was bootstrapped with [`web-app-template`](https://github.com/remar
 Games that use this template:
 
 - [Button Clicker](https://remarkablegames.org/button-clicker)
-- [Repl.it Clicker](https://repl.it/talk/challenge/replit-clicker/13259)
+- [Replit Clicker](https://repl.it/talk/challenge/replit-clicker/13259)
 
 ## Prerequisites
 
-- [Node.js >=10](https://nodejs.org/en/download/)
-- [npm >=5.6](https://www.npmjs.com/get-npm) or [Yarn >=1](https://yarnpkg.com/lang/en/docs/install/)
+- [Node.js](https://nodejs.org/en/download/)
 
 ## Install
 
@@ -24,19 +23,18 @@ Clone the repository:
 
 ```sh
 git clone https://github.com/remarkablegames/button-clicker.git
+cd button-clicker
 ```
 
-Rename the project (replace `button-clicker` and `Button Clicker` with your game name):
+Rename the project:
 
 ```sh
-mv button-clicker my-clicker && cd $_
 git grep -l button-clicker | xargs sed -i '' -e 's/button-clicker/my-clicker/g'
 git grep -l 'Button Clicker' | xargs sed -i '' -e 's/Button Clicker/My Clicker/g'
 ```
 
 Update the files:
 
-- [ ] `.env.production`
 - [ ] `README.md`
 - [ ] `package.json`
 - [ ] `public/index.html`
@@ -59,7 +57,7 @@ Make your first commit:
 
 ```sh
 git add .
-git commit -m "feat: initialize game from button-clicker"
+git commit -m 'feat: initialize game from button-clicker'
 ```
 
 > Commit messages follow the [Conventional Commits](https://conventionalcommits.org/) format, which is used during release.
@@ -71,116 +69,29 @@ git remote add origin <remote-repository-url>
 git push origin -u origin master
 ```
 
-## Migration
-
-Migrate your clicker game to use [@descriptive/web-scripts](https://www.npmjs.com/package/@descriptive/web-scripts):
-
-```sh
-npx web-scripts-migration --phaser
-```
-
-See [blog post](https://remarkablemark.org/blog/2020/06/06/web-app-template/#migration) or [web-scripts-migration](https://www.npmjs.com/package/web-scripts-migration).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.
+Runs the game in the development mode.
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:1234](http://localhost:1234) to view it in the browser.
 
 The page will reload if you make edits.
 
-You will also see any lint errors in the console.
+You will also see any errors in the console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.
+Builds the game for production to the `dist` folder.
 
 It correctly bundles in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.
 
-Your app is ready to be deployed!
-
-See the section about [deployment](https://create-react-app.dev/docs/deployment/) for more information.
-
-### `npm run release`
-
-Bumps the `package.json` version with [standard-version](https://github.com/conventional-changelog/standard-version).
-
-### `npm run deploy`
-
-Deploys the app to [GitHub Pages](https://pages.github.com/) by force pushing the `build` folder to the remote repository's `gh-pages` branch.
-
-## Environment Variables
-
-Environment variables work similarly to [Create React App](https://create-react-app.dev/docs/adding-custom-environment-variables/) except they begin with `WEB_APP_` instead of `REACT_APP_`.
-
-For example:
-
-```
-# .env
-WEB_APP_VERSION=$npm_package_version
-WEB_APP_DOMAIN=www.example.com
-WEB_APP_FOO=$DOMAIN/foo
-```
-
-## Testing
-
-Tests are run just like [Create React App](https://create-react-app.dev/docs/running-tests):
-
-```sh
-npm test
-```
-
-## Build
-
-You can build the production game locally with:
-
-```sh
-npm run build
-```
-
-Rename the build directory if your game is hosted at a subdirectory:
-
-```sh
-mv build button-clicker
-```
-
-Or enter the build directory if your game is hosted at the root:
-
-```sh
-cd build
-```
-
-Start a static file server:
-
-```sh
-python -m SimpleHTTPServer
-```
-
-Stop the server with `Ctrl + C`.
-
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
-
-> If your game is hosted at a subdirectory, open the folder in the directory listing.
-
-Once you're done, clean up the build directory.
-
-If your game is hosted at a subdirectory:
-
-```sh
-rm -rf button-clicker
-```
-
-Or if your game is hosted at the root:
-
-```sh
-rm -rf build
-```
+Your game is ready to be deployed!
 
 ## Sources
 
