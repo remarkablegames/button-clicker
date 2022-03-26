@@ -1,5 +1,12 @@
 {
-  "extends": "@descriptive/web-app",
+  "env": {
+    "browser": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
   "plugins": ["prettier"],
   "rules": {
     "no-debugger": "error",
