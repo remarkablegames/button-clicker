@@ -1,2 +1,3 @@
-import './index.css';
+import './analytics';
 import './game';
+import './index.css';
