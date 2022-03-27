@@ -38,3 +38,17 @@ jobs:
       - name: Read package version
         run: echo ::set-output name=VERSION::$(jq -r .version package.json)
         id: package
+
+      - name: Build
+        # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          VERSION: ${{ steps.package.outputs.VERSION }}
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: dist
