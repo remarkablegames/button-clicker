@@ -2,7 +2,7 @@
 
 <kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game). It's built with HTML, CSS, and JavaScript.
 
-The template was bootstrapped with [`web-app-template`](https://github.com/remarkablemark/web-app-template). The demo is hosted on [remarkablegames](https://remarkablegames.org/).
+The template was built with [Parcel](https://parceljs.org/). The demo is hosted on [remarkablegames](https://remarkablegames.org/).
 
 [Click the button.](https://remarkablegames.org/button-clicker/)
 
