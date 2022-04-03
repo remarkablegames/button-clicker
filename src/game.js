@@ -1,12 +1,11 @@
 import { EVENT_CLICK, SELECTOR_BUTTON } from './constants';
-import {
-  calculateNextCost,
-  elements,
-  formatGeneratorOutput,
-  getElementById,
-} from './helpers';
+import { calculateNextCost, elements, getElementById } from './helpers';
 import * as state from './state';
-import { initializeGenerators } from './views';
+import {
+  initializeGenerators,
+  renderGenerator,
+  renderGenerators,
+} from './views';
 
 initializeGenerators();
 
@@ -30,28 +29,6 @@ const views = {
     cursorRow.querySelector(
       '.output-next'
     ).innerText = `${cursor.output.next.toLocaleString()} per click`;
-  },
-
-  /**
-   * @param {String} id
-   */
-  renderGenerator: (id) => {
-    const generator = state.generators[id];
-    const generatorRow = getElementById(id);
-    generatorRow.querySelector('.owned').innerText =
-      generator.owned.toLocaleString();
-    generatorRow.querySelector('.cost').innerText =
-      generator.cost.next.toLocaleString();
-    generatorRow.querySelector('.output-current').innerText =
-      formatGeneratorOutput(generator.output.current, generator.delay);
-    generatorRow.querySelector('.output-next').innerText =
-      formatGeneratorOutput(generator.output.next, generator.delay);
-  },
-
-  renderGenerators: () => {
-    Object.keys(state.generators).forEach((id) => {
-      views.renderGenerator(id);
-    });
   },
 
   /**
@@ -143,7 +120,7 @@ const actions = {
     cost.next = calculateNextCost(cost.base, cost.rate, owned);
     output.current = output.next;
     output.next = Math.round(output.base * (owned + 1));
-    views.renderGenerator(id);
+    renderGenerator(id);
   },
 };
 
@@ -199,4 +176,4 @@ Object.keys(state.generators).forEach((id) => {
 /** Bootstrap. */
 views.renderCounter();
 views.renderCursor();
-views.renderGenerators();
+renderGenerators();
