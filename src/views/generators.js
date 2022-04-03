@@ -2,7 +2,7 @@ import { SELECTOR_BUTTON } from '../constants';
 import { elements } from '../helpers';
 import * as state from '../state';
 
-export function renderGenerators() {
+export function initializeGenerators() {
   Object.keys(state.generators).forEach((id) => {
     // append generator to table
     const generator = state.generators[id];

@@ -6,9 +6,9 @@ import {
   getElementById,
 } from './helpers';
 import * as state from './state';
-import { renderGenerators } from './views';
+import { initializeGenerators } from './views';
 
-renderGenerators();
+initializeGenerators();
 
 /** Views. */
 const views = {
