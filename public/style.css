@@ -1,3 +1,4 @@
+html,
 body {
   border: 0;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
@@ -39,6 +40,7 @@ td:first-child {
   text-align: left;
 }
 
+/* github-corners */
 .github-corner > svg {
   color: #151513 !important;
   fill: #fafafa !important;
