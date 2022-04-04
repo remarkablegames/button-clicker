@@ -3,6 +3,7 @@ import { calculateNextCost, elements, getElementById } from './helpers';
 import * as state from './state';
 import {
   initializeGenerators,
+  renderCounter,
   renderGenerator,
   renderGenerators,
 } from './views';
@@ -11,10 +12,6 @@ initializeGenerators();
 
 /** Views. */
 const views = {
-  renderCounter: () => {
-    elements.counter.innerText = state.clicks.current.toLocaleString();
-  },
-
   renderCursor: () => {
     const cursorRow = elements.cursor;
     const { cursor } = state;
@@ -82,7 +79,7 @@ const actions = {
       views.renderMessage();
     }
 
-    views.renderCounter();
+    renderCounter();
     elements.cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
@@ -174,6 +171,6 @@ Object.keys(state.generators).forEach((id) => {
 });
 
 /** Bootstrap. */
-views.renderCounter();
+renderCounter();
 views.renderCursor();
 renderGenerators();
