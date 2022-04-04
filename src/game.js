@@ -7,48 +7,10 @@ import {
   renderCursor,
   renderGenerator,
   renderGenerators,
+  renderMessage,
 } from './views';
 
 initializeGenerators();
-
-/** Views. */
-const views = {
-  /**
-   * @param {String} [text='']
-   */
-  renderMessage: (text = '') => {
-    const { total } = state.clicks;
-    let message;
-
-    if (text) {
-      message = text;
-    } else {
-      // check for exact match in messages table
-      if (state.messages[total]) {
-        message = state.messages[total];
-        delete state.messages[total];
-      } else {
-        // otherwise compare number of first message
-        for (const key in state.messages) {
-          if (total >= key) {
-            message = state.messages[key];
-            delete state.messages[key];
-          }
-          break;
-        }
-      }
-    }
-
-    if (!message) {
-      return;
-    }
-
-    message = message.toLocaleString();
-    if (message !== elements.message.innerText) {
-      elements.message.innerText = message;
-    }
-  },
-};
 
 /** Actions. */
 const actions = {
@@ -61,7 +23,7 @@ const actions = {
     clicks.current += number;
     if (!skipTotal) {
       clicks.total += number;
-      views.renderMessage();
+      renderMessage();
     }
 
     renderCounter();
@@ -119,7 +81,7 @@ elements.cursorButton.addEventListener(EVENT_CLICK, () => {
     const { cursor } = state;
     actions.decrement(cursor.cost.next);
     actions.updateCursor();
-    views.renderMessage(cursor.message);
+    renderMessage(cursor.message);
   }
 });
 
@@ -149,7 +111,7 @@ Object.keys(state.generators).forEach((id) => {
         }
 
         if (generator.message) {
-          views.renderMessage(generator.message);
+          renderMessage(generator.message);
         }
       }
     });
