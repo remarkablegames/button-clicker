@@ -4,6 +4,7 @@ import * as state from './state';
 import {
   initializeGenerators,
   renderCounter,
+  renderCursor,
   renderGenerator,
   renderGenerators,
 } from './views';
@@ -12,22 +13,6 @@ initializeGenerators();
 
 /** Views. */
 const views = {
-  renderCursor: () => {
-    const cursorRow = elements.cursor;
-    const { cursor } = state;
-    cursorRow.querySelector('.owned').innerText = (
-      cursor.owned - 1
-    ).toLocaleString();
-    cursorRow.querySelector('.cost').innerText =
-      cursor.cost.next.toLocaleString();
-    cursorRow.querySelector(
-      '.output-current'
-    ).innerText = `${cursor.output.current.toLocaleString()} per click`;
-    cursorRow.querySelector(
-      '.output-next'
-    ).innerText = `${cursor.output.next.toLocaleString()} per click`;
-  },
-
   /**
    * @param {String} [text='']
    */
@@ -104,7 +89,7 @@ const actions = {
     cost.next = calculateNextCost(cost.base, cost.rate, owned - 1);
     output.current = output.next;
     output.next = Math.round(output.base * owned);
-    views.renderCursor();
+    renderCursor();
   },
 
   /**
@@ -172,5 +157,5 @@ Object.keys(state.generators).forEach((id) => {
 
 /** Bootstrap. */
 renderCounter();
-views.renderCursor();
+renderCursor();
 renderGenerators();
