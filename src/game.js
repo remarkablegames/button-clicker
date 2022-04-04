@@ -1,16 +1,9 @@
 import { EVENT_CLICK, SELECTOR_BUTTON } from './constants';
 import { calculateNextCost, elements, getElementById } from './helpers';
 import * as state from './state';
-import {
-  initializeGenerators,
-  renderCounter,
-  renderCursor,
-  renderGenerator,
-  renderGenerators,
-  renderMessage,
-} from './views';
+import * as views from './views';
 
-initializeGenerators();
+views.initializeGenerators();
 
 /** Actions. */
 const actions = {
@@ -23,10 +16,10 @@ const actions = {
     clicks.current += number;
     if (!skipTotal) {
       clicks.total += number;
-      renderMessage();
+      views.renderMessage();
     }
 
-    renderCounter();
+    views.renderCounter();
     elements.cursorButton.disabled = clicks.current < state.cursor.cost.next;
 
     const { generators } = state;
@@ -51,7 +44,7 @@ const actions = {
     cost.next = calculateNextCost(cost.base, cost.rate, owned - 1);
     output.current = output.next;
     output.next = Math.round(output.base * owned);
-    renderCursor();
+    views.renderCursor();
   },
 
   /**
@@ -64,7 +57,7 @@ const actions = {
     cost.next = calculateNextCost(cost.base, cost.rate, owned);
     output.current = output.next;
     output.next = Math.round(output.base * (owned + 1));
-    renderGenerator(id);
+    views.renderGenerator(id);
   },
 };
 
@@ -81,7 +74,7 @@ elements.cursorButton.addEventListener(EVENT_CLICK, () => {
     const { cursor } = state;
     actions.decrement(cursor.cost.next);
     actions.updateCursor();
-    renderMessage(cursor.message);
+    views.renderMessage(cursor.message);
   }
 });
 
@@ -111,13 +104,13 @@ Object.keys(state.generators).forEach((id) => {
         }
 
         if (generator.message) {
-          renderMessage(generator.message);
+          views.renderMessage(generator.message);
         }
       }
     });
 });
 
 /** Bootstrap. */
-renderCounter();
-renderCursor();
-renderGenerators();
+views.renderCounter();
+views.renderCursor();
+views.renderGenerators();
