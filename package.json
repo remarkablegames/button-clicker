@@ -14,7 +14,7 @@
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.3",
+    "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.1",
     "@parcel/packager-raw-url": "2.4.1",
     "@parcel/transformer-webmanifest": "^2.4.1",
