@@ -20,7 +20,7 @@
     "@parcel/transformer-webmanifest": "^2.4.1",
     "eslint": "^8.20.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "parcel": "^2.4.1",
     "prettier": "^2.6.2"
