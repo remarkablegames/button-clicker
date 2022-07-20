@@ -35,9 +35,6 @@ jobs:
       - name: ESLint
         run: npm run lint
 
-      - name: Type check
-        run: npm run tsc
-
       - name: Read package version
         run: echo ::set-output name=VERSION::$(jq -r .version package.json)
         id: package
