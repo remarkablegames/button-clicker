@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/config-conventional": "^17.1.0",
     "@parcel/packager-raw-url": "2.6.2",
     "@parcel/transformer-webmanifest": "^2.6.2",
     "eslint": "^8.22.0",
