@@ -1,5 +1,5 @@
 name: build
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -33,10 +33,6 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
-
-      - name: Read package version
-        run: echo ::set-output name=VERSION::$(jq -r .version package.json)
-        id: package
 
       - name: Build
         run: npm run build
