@@ -26,5 +26,18 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Read package version
+        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
       - name: Build
-        run: npm run build
+        # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
