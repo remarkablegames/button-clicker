@@ -17,7 +17,6 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install --prefer-offline
 
       - name: Lint commit message
