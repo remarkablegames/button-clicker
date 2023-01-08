@@ -3,11 +3,13 @@
  *
  * https://developers.google.com/analytics/devguides/collection/gtagjs
  */
+export const gtag = window.gtag;
 
-window.gtag('config', process.env.GOOGLE_ANALYTICS_ID);
+gtag('config', process.env.GOOGLE_ANALYTICS_ID);
 
-window[`ga-disable-${process.env.GOOGLE_ANALYTICS_ID}`] =
-  process.env.NODE_ENV !== 'production';
+(window as unknown as Record<string, boolean>)[
+  `ga-disable-${process.env.GOOGLE_ANALYTICS_ID}`
+] = process.env.NODE_ENV !== 'production';
 
 const script = document.createElement('script');
 script.async = true;
