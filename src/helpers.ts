@@ -14,6 +14,8 @@ export const elements = {
   store: document.getElementById('store')!,
 };
 
+type ElementId = keyof typeof elements;
+
 /**
  * Calculates next cost of cursor or generator upgrade.
  *
@@ -35,11 +37,11 @@ export const calculateNextCost = (
  * @returns - Element.
  */
 export function getElementById(id: string): HTMLElement {
-  const element = elements[id as keyof typeof elements];
+  const element = elements[id as ElementId];
   if (element) {
     return element;
   }
-  return ((elements[id as keyof typeof elements] as HTMLElement) =
+  return ((elements[id as ElementId] as HTMLElement) =
     document.getElementById(id)!);
 }
 

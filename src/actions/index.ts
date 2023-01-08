@@ -26,7 +26,7 @@ export function increment(number: number, skipTotal = false): void {
     const generatorRow = getElementById(id);
     const generatorButton = generatorRow.querySelector(SELECTOR_BUTTON)!;
     generatorButton.disabled =
-      clicks.current < generators[id as keyof typeof generators].cost.next;
+      clicks.current < generators[id as state.GeneratorId].cost.next;
   });
 }
 
@@ -57,7 +57,7 @@ export function updateCursor() {
  *
  * @param id - Generator id.
  */
-export function updateGenerator(id: keyof typeof state.generators) {
+export function updateGenerator(id: state.GeneratorId) {
   const generator = state.generators[id];
   const { cost, output } = generator;
   const owned = ++generator.owned;
