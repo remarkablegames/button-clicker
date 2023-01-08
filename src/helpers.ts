@@ -34,11 +34,13 @@ export const calculateNextCost = (
  * @param id - Element id.
  * @returns - Element.
  */
-export function getElementById(id: keyof typeof elements): HTMLElement {
-  if (elements[id]) {
-    return elements[id];
+export function getElementById(id: string): HTMLElement {
+  const element = elements[id as keyof typeof elements];
+  if (element) {
+    return element;
   }
-  return ((elements[id] as HTMLElement) = document.getElementById(id)!);
+  return ((elements[id as keyof typeof elements] as HTMLElement) =
+    document.getElementById(id)!);
 }
 
 /**
