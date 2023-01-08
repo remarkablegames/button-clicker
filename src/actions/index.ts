@@ -6,12 +6,13 @@ import * as views from '../views';
 /**
  * Increments clicks.
  *
- * @param {number} number
- * @param {boolean} skipTotal
+ * @param number - Number.
+ * @param skipTotal - Whether to skip total.
  */
-export function increment(number, skipTotal = false) {
+export function increment(number: number, skipTotal = false): void {
   const { clicks } = state;
   clicks.current += number;
+
   if (!skipTotal) {
     clicks.total += number;
     views.renderMessage();
@@ -23,17 +24,18 @@ export function increment(number, skipTotal = false) {
   const { generators } = state;
   Object.keys(generators).forEach((id) => {
     const generatorRow = getElementById(id);
-    const generatorButton = generatorRow.querySelector(SELECTOR_BUTTON);
-    generatorButton.disabled = clicks.current < generators[id].cost.next;
+    const generatorButton = generatorRow.querySelector(SELECTOR_BUTTON)!;
+    generatorButton.disabled =
+      clicks.current < generators[id as keyof typeof generators].cost.next;
   });
 }
 
 /**
  * Decrements clicks.
  *
- * @param {number} clicks
+ * @param clicks - Clicks.
  */
-export function decrement(clicks) {
+export function decrement(clicks: number): void {
   increment(-clicks, true);
 }
 
@@ -53,9 +55,9 @@ export function updateCursor() {
 /**
  * Updates generator.
  *
- * @param {string} id
+ * @param id - Generator id.
  */
-export function updateGenerator(id) {
+export function updateGenerator(id: keyof typeof state.generators) {
   const generator = state.generators[id];
   const { cost, output } = generator;
   const owned = ++generator.owned;
