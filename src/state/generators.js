@@ -9,10 +9,12 @@ export const generators = {
     delay: 10, // seconds
     cost: {
       base: 15,
+      next: 15,
       rate: 1.15,
     },
     output: {
       base: 1,
+      next: 1,
       current: 0,
     },
   },
@@ -24,10 +26,12 @@ export const generators = {
     delay: 1, // seconds
     cost: {
       base: 100,
+      next: 100,
       rate: 1.15,
     },
     output: {
       base: 1,
+      next: 1,
       current: 0,
     },
   },
@@ -38,11 +42,14 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 11e2, // 1,100
+      // 1,100
+      base: 11e2,
+      next: 11e2,
       rate: 1.15,
     },
     output: {
       base: 8,
+      next: 8,
       current: 0,
     },
   },
@@ -53,11 +60,14 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 12e3, // 12,000
+      // 12,000
+      base: 12e3,
+      next: 12e3,
       rate: 1.15,
     },
     output: {
       base: 47,
+      next: 47,
       current: 0,
     },
   },
@@ -68,11 +78,14 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 13e4, // 130,000
+      // 130,000
+      base: 13e4,
+      next: 13e4,
       rate: 1.15,
     },
     output: {
       base: 260,
+      next: 260,
       current: 0,
     },
   },
@@ -83,11 +96,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 14e5, // 1,400,000
+      // 1,400,000
+      base: 14e5,
+      next: 14e5,
       rate: 1.15,
     },
     output: {
-      base: 14e2, // 1,400
+      // 1,400
+      base: 14e2,
+      next: 14e2,
       current: 0,
     },
   },
@@ -98,11 +115,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 2e7, // 20,000,000
+      // 20,000,000
+      base: 2e7,
+      next: 2e7,
       rate: 1.15,
     },
     output: {
-      base: 78e2, // 7,800
+      // 7,800
+      base: 78e2,
+      next: 78e2,
       current: 0,
     },
   },
@@ -113,11 +134,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 33e7, // 330,000,000
+      // 330,000,000
+      base: 33e7,
+      next: 33e7,
       rate: 1.15,
     },
     output: {
-      base: 44e3, // 44,000
+      // 44,000
+      base: 44e3,
+      next: 44e3,
       current: 0,
     },
   },
@@ -128,11 +153,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 51e8, // 5,100,000,000
+      // 5,100,000,000
+      base: 51e8,
+      next: 51e8,
       rate: 1.15,
     },
     output: {
-      base: 26e4, // 260,000
+      // 260,000
+      base: 26e4,
+      next: 26e4,
       current: 0,
     },
   },
@@ -143,11 +172,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 75e9, // 75,000,000,000
+      // 75,000,000,000
+      base: 75e9,
+      next: 75e9,
       rate: 1.15,
     },
     output: {
-      base: 16e5, // 1,600,000
+      // 1,600,000
+      base: 16e5,
+      next: 16e5,
       current: 0,
     },
   },
@@ -158,11 +191,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 1e12, // 1,000,000,000,000
+      // 1,000,000,000,000
+      base: 1e12,
+      next: 1e12,
       rate: 1.15,
     },
     output: {
-      base: 1e7, // 10,000,000
+      // 10,000,000
+      base: 1e7,
+      next: 1e7,
       current: 0,
     },
   },
@@ -173,11 +210,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 14e12, // 14,000,000,000,000
+      // 14,000,000,000,000
+      base: 14e12,
+      next: 14e12,
       rate: 1.15,
     },
     output: {
-      base: 65e6, // 65,000,000
+      // 65,000,000
+      base: 65e6,
+      next: 65e6,
       current: 0,
     },
   },
@@ -188,11 +229,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 17e13, // 170,000,000,000,000
+      // 170,000,000,000,000
+      base: 17e13,
+      next: 17e13,
       rate: 1.15,
     },
     output: {
-      base: 43e7, // 430,000,000
+      // 430,000,000
+      base: 43e7,
+      next: 43e7,
       current: 0,
     },
   },
@@ -203,11 +248,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 21e14, // 2,100,000,000,000,000
+      // 2,100,000,000,000,000
+      base: 21e14,
+      next: 21e14,
       rate: 1.15,
     },
     output: {
-      base: 29e8, // 2,900,000,000
+      // 2,900,000,000
+      base: 29e8,
+      next: 29e8,
       current: 0,
     },
   },
@@ -218,11 +267,15 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 26e15, // 26,000,000,000,000,000
+      // 26,000,000,000,000,000
+      base: 26e15,
+      next: 26e15,
       rate: 1.15,
     },
     output: {
-      base: 21e9, // 21,000,000,000
+      // 21,000,000,000
+      base: 21e9,
+      next: 21e9,
       current: 0,
     },
   },
@@ -233,19 +286,16 @@ export const generators = {
     owned: 0,
     delay: 1, // seconds
     cost: {
-      base: 31e16, // 310,000,000,000,000,000
+      // 310,000,000,000,000,000
+      base: 31e16,
+      next: 31e16,
       rate: 1.15,
     },
     output: {
-      base: 15e10, // 150,000,000,000
+      // 150,000,000,000
+      base: 15e10,
+      next: 15e10,
       current: 0,
     },
   },
 };
-
-Object.keys(generators).forEach((id) => {
-  // set `next` value for generator `cost` and `output`
-  const generator = generators[id];
-  generator.cost.next = generator.cost.base;
-  generator.output.next = generator.output.base;
-});
