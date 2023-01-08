@@ -1,5 +1,5 @@
-import { elements } from '../helpers';
 import * as state from '../state';
+import { elements } from '../utils';
 
 /**
  * Renders cursor.

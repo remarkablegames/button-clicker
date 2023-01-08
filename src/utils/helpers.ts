@@ -1,4 +1,4 @@
-import { SELECTOR_BUTTON } from './constants';
+import { SELECTOR_BUTTON } from '../constants';
 
 /**
  * Elements.

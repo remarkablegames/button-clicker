@@ -1,5 +1,3 @@
-import './analytics';
-
 import * as events from './events';
 import * as views from './views';
 

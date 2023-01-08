@@ -1,6 +1,6 @@
 import { SELECTOR_BUTTON } from '../constants';
-import { elements, formatGeneratorOutput, getElementById } from '../helpers';
 import * as state from '../state';
+import { elements, formatGeneratorOutput, getElementById } from '../utils';
 
 /**
  * Appends generators to table.

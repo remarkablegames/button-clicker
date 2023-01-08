@@ -1,6 +1,6 @@
 import { SELECTOR_BUTTON } from '../constants';
-import { calculateNextCost, elements, getElementById } from '../helpers';
 import * as state from '../state';
+import { calculateNextCost, elements, getElementById } from '../utils';
 import * as views from '../views';
 
 /**
