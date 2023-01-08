@@ -1,15 +1,17 @@
+const costBase = 100;
+const outputBase = 2;
+
 export const cursor = {
   message: 'Upgraded cursor click power.',
   owned: 1,
   cost: {
-    base: 100,
+    base: costBase,
     rate: 2,
+    next: costBase,
   },
   output: {
-    base: 2,
+    base: outputBase,
     current: 1,
+    next: outputBase,
   },
 };
-
-cursor.cost.next = cursor.cost.base;
-cursor.output.next = cursor.output.base;
