@@ -1,6 +1,6 @@
+import * as actions from '../actions';
 import { EVENT_CLICK, SELECTOR_BUTTON } from '../constants';
 import { elements, getElementById } from '../helpers';
-import * as actions from '../actions';
 import * as state from '../state';
 import * as views from '../views';
 
