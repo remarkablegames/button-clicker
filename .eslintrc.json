@@ -8,6 +8,7 @@
   "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
   "rules": {
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "no-console": "error",
     "no-debugger": "error",
     "prettier/prettier": "error",

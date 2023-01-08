@@ -17,6 +17,10 @@ export const generators = {
       next: 1,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator2: {
@@ -33,6 +37,10 @@ export const generators = {
       base: 1,
       next: 1,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -52,6 +60,10 @@ export const generators = {
       next: 8,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator4: {
@@ -70,6 +82,10 @@ export const generators = {
       next: 47,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator5: {
@@ -87,6 +103,10 @@ export const generators = {
       base: 260,
       next: 260,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -107,6 +127,10 @@ export const generators = {
       next: 14e2,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator7: {
@@ -125,6 +149,10 @@ export const generators = {
       base: 78e2,
       next: 78e2,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -145,6 +173,10 @@ export const generators = {
       next: 44e3,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator9: {
@@ -163,6 +195,10 @@ export const generators = {
       base: 26e4,
       next: 26e4,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -183,6 +219,10 @@ export const generators = {
       next: 16e5,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator11: {
@@ -201,6 +241,10 @@ export const generators = {
       base: 1e7,
       next: 1e7,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -221,6 +265,10 @@ export const generators = {
       next: 65e6,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator13: {
@@ -239,6 +287,10 @@ export const generators = {
       base: 43e7,
       next: 43e7,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -259,6 +311,10 @@ export const generators = {
       next: 29e8,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 
   generator15: {
@@ -277,6 +333,10 @@ export const generators = {
       base: 21e9,
       next: 21e9,
       current: 0,
+    },
+    interval: {
+      callback() {},
+      set: false,
     },
   },
 
@@ -297,5 +357,11 @@ export const generators = {
       next: 15e10,
       current: 0,
     },
+    interval: {
+      callback() {},
+      set: false,
+    },
   },
 };
+
+export type GeneratorId = keyof typeof generators;
