@@ -71,10 +71,10 @@ git push origin -u origin master
 
 ## Environment Variables
 
-Copy the environment variables:
+Set the environment variables:
 
 ```sh
-cp .env.example .env
+less .env
 ```
 
 Update the **Secrets** in the repository **Settings**.

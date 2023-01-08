@@ -13,6 +13,7 @@
     "postinstall": "husky install",
     "start": "parcel --open"
   },
+  "homepage": "https://remarkablegames.org/button-clicker/",
   "devDependencies": {
     "@commitlint/cli": "17.4.0",
     "@commitlint/config-conventional": "17.4.0",

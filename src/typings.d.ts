@@ -2,8 +2,9 @@
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    readonly NODE_ENV: 'development' | 'production';
     readonly GOOGLE_ANALYTICS_ID: string;
+    readonly NODE_ENV: 'development' | 'production';
+    readonly URL: string;
   }
 }
 
