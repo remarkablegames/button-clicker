@@ -32,25 +32,24 @@ export function addCursorListener() {
  */
 export function addGeneratorListeners() {
   Object.keys(state.generators).forEach((id) => {
-    const generator = state.generators[id];
+    const generator = state.generators[id as state.GeneratorId];
     const generatorRow = getElementById(id);
 
     generatorRow
-      .querySelector(SELECTOR_BUTTON)
+      .querySelector(SELECTOR_BUTTON)!
       .addEventListener(EVENT_CLICK, () => {
         if (state.clicks.current >= generator.cost.next) {
           actions.decrement(generator.cost.next);
-          actions.updateGenerator(id);
+          actions.updateGenerator(id as state.GeneratorId);
 
-          if (generator.interval) {
+          if (generator.interval.set) {
             generator.interval.callback = () => {
               actions.increment(generator.output.current);
             };
           } else {
-            generator.interval = {
-              callback: () => {
-                actions.increment(generator.output.current);
-              },
+            generator.interval.set = true;
+            generator.interval.callback = () => {
+              actions.increment(generator.output.current);
             };
             setInterval(generator.interval.callback, generator.delay * 1000);
           }
