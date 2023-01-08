@@ -22,3 +22,5 @@ export const messages = {
   1e21: 'The button has been clicked one hundred quitillion times.',
   1e22: 'The button has been clicked one sextillion times.',
 };
+
+export type MessageId = keyof typeof messages;

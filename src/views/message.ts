@@ -4,7 +4,7 @@ import * as state from '../state';
 /**
  * Renders message.
  *
- * @param {string} text
+ * @param text - Message.
  */
 export function renderMessage(text = '') {
   const { total } = state.clicks;
@@ -14,15 +14,17 @@ export function renderMessage(text = '') {
     message = text;
   } else {
     // check for exact match in messages table
-    if (state.messages[total]) {
-      message = state.messages[total];
-      delete state.messages[total];
+    if (state.messages[total as state.MessageId]) {
+      message = state.messages[total as state.MessageId];
+      delete state.messages[total as state.MessageId];
     } else {
       // otherwise compare number of first message
       for (const key in state.messages) {
-        if (total >= key) {
-          message = state.messages[key];
-          delete state.messages[key];
+        const id = Number(key) as state.MessageId;
+
+        if (total >= id) {
+          message = state.messages[id];
+          delete state.messages[id];
         }
         break;
       }
