@@ -27,7 +27,7 @@ type ElementId = keyof typeof elements;
 export const calculateNextCost = (
   base: number,
   rate: number,
-  owned: number
+  owned: number,
 ): number => Math.floor(base * Math.pow(rate, owned));
 
 /**
@@ -62,7 +62,7 @@ export function getElementById(id: string): HTMLElement {
  */
 export const formatGeneratorOutput = (
   clicks: number,
-  seconds: number
+  seconds: number,
 ): string =>
   `${clicks.toLocaleString()} ${
     clicks === 1 ? 'click' : 'clicks'
