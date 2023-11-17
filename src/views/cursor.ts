@@ -15,11 +15,9 @@ export function renderCursor(): void {
   (cursorRow.querySelector('.cost') as HTMLElement).innerText =
     cursor.cost.next.toLocaleString();
 
-  (
-    cursorRow.querySelector('.output-current') as HTMLElement
-  ).innerText = `${cursor.output.current.toLocaleString()} per click`;
+  (cursorRow.querySelector('.output-current') as HTMLElement).innerText =
+    `${cursor.output.current.toLocaleString()} per click`;
 
-  (
-    cursorRow.querySelector('.output-next') as HTMLElement
-  ).innerText = `${cursor.output.next.toLocaleString()} per click`;
+  (cursorRow.querySelector('.output-next') as HTMLElement).innerText =
+    `${cursor.output.next.toLocaleString()} per click`;
 }
