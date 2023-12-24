@@ -15,7 +15,7 @@ Games that use this template:
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/)
+- [nvm](https://github.com/nvm-sh/nvm#readme)
 
 ## Install
 
