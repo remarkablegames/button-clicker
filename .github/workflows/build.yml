@@ -33,13 +33,12 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
-          echo "URL=$(jq -r .homepage package.json)" >> $GITHUB_ENV
+          echo "VITE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build
-        run: npm run build -- --public-url ${{ env.URL }}
+        run: npm run build -- --base /${{ github.event.repository.name }}/
         env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
       - name: Deploy
         if: github.ref_name == 'master'

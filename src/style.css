@@ -1,7 +1,11 @@
 html,
 body {
   border: 0;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font:
+    14px 'Lucida Grande',
+    Helvetica,
+    Arial,
+    sans-serif;
   margin: 0;
   padding: 0;
 }

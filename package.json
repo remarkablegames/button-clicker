@@ -3,22 +3,20 @@
   "version": "1.0.0-alpha",
   "description": "A button clicker idle game.",
   "author": "Mark <mark@remarkablemark.org>",
-  "source": "public/index.html",
   "scripts": {
-    "build": "parcel build",
-    "clean": "rm -rf .parcel-cache dist",
+    "build": "vite build",
+    "clean": "rm -rf dist",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "lint:tsc": "tsc --noEmit",
     "postinstall": "husky install",
-    "start": "parcel --open"
+    "preview": "vite preview",
+    "start": "vite --open"
   },
   "homepage": "https://remarkablegames.org/button-clicker/",
   "devDependencies": {
     "@commitlint/cli": "18.4.3",
     "@commitlint/config-conventional": "18.4.3",
-    "@parcel/packager-raw-url": "2.10.3",
-    "@parcel/transformer-webmanifest": "2.10.3",
     "@types/gtag.js": "0.0.18",
     "@typescript-eslint/eslint-plugin": "6.15.0",
     "@typescript-eslint/parser": "6.15.0",
@@ -27,9 +25,9 @@
     "eslint-plugin-simple-import-sort": "10.0.0",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
-    "parcel": "2.10.3",
     "prettier": "3.1.1",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "vite": "5.0.10"
   },
   "private": true,
   "license": "MIT"
