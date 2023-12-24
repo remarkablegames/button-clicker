@@ -2,9 +2,12 @@
 
 <kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game). It's built with HTML, CSS, and JavaScript.
 
-The template was built with [Parcel](https://parceljs.org/). The demo is hosted on [remarkablegames](https://remarkablegames.org/).
+[Play the demo.](https://remarkablegames.org/button-clicker/)
 
-[Click the button.](https://remarkablegames.org/button-clicker/)
+This template was built with:
+
+- [GitHub Pages](https://pages.github.com/)
+- [Vite](https://vitejs.dev/)
 
 ## Games
 
@@ -36,8 +39,8 @@ git grep -l 'Button Clicker' | xargs sed -i '' -e 's/Button Clicker/My Clicker/g
 Update the files:
 
 - [ ] `README.md`
+- [ ] `index.html`
 - [ ] `package.json`
-- [ ] `public/index.html`
 - [ ] `public/manifest.json`
 
 Install the dependencies:
