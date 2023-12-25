@@ -4,7 +4,7 @@
 
 [Play the demo.](https://remarkablegames.org/button-clicker/)
 
-This template is built with:
+The template is built with:
 
 - [GitHub Pages](https://pages.github.com/)
 - [Vite](https://vitejs.dev/)
