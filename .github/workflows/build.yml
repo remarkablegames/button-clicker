@@ -31,10 +31,6 @@ jobs:
       - name: Type check
         run: npm run lint:tsc
 
-      - name: Set environment variables
-        run: |
-          echo "VITE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
-
       - name: Build
         run: npm run build -- --base /${{ github.event.repository.name }}/
         env:
