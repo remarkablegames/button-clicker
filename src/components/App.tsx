@@ -1,15 +1,10 @@
-import { useEffect } from 'react';
-
 import * as actions from '../actions';
-import * as events from '../events';
 import * as state from '../state';
 import { formatGeneratorOutput } from '../utils';
+import * as views from '../views';
 
 export default function App() {
-  useEffect(() => {
-    events.addCursorListener();
-    events.addGeneratorListeners();
-  }, []);
+  const clicks = state.useClickStore();
 
   return (
     <>
@@ -17,12 +12,12 @@ export default function App() {
 
       <main>
         <h1>Button Clicker</h1>
-        <p id="counter">{state.clicks.current.toLocaleString()}</p>
+        <p id="counter">{clicks.current.toLocaleString()}</p>
         <p>
           <button
             title="Click Button"
             onClick={() => {
-              actions.increment(state.cursor.output.current);
+              clicks.increase(state.cursor.output.current);
             }}
           >
             Click Button
@@ -42,19 +37,30 @@ export default function App() {
           <tbody id="store">
             <tr id="cursor">
               <td>
-                <button disabled title="Cursor">
+                <button
+                  disabled={clicks.current < state.cursor.cost.next}
+                  title="Cursor"
+                  onClick={() => {
+                    clicks.decrease(state.cursor.cost.next);
+                    actions.updateCursor();
+                    views.renderMessage(state.cursor.message);
+                  }}
+                >
                   Cursor
                 </button>{' '}
                 <span className="owned">
                   {(state.cursor.owned - 1).toLocaleString()}
                 </span>
               </td>
+
               <td className="cost">
                 {state.cursor.cost.next.toLocaleString()}
               </td>
+
               <td className="output-current">
                 {`${state.cursor.output.current.toLocaleString()} per click`}
               </td>
+
               <td className="output-next">
                 {`${state.cursor.output.next.toLocaleString()} per click`}
               </td>
@@ -64,7 +70,36 @@ export default function App() {
               ([generatorId, generator]) => (
                 <tr id={generatorId} key={generatorId}>
                   <td>
-                    <button disabled title={generator.label}>
+                    <button
+                      disabled={clicks.current < generator.cost.next}
+                      title={generator.label}
+                      onClick={() => {
+                        clicks.decrease(generator.cost.next);
+                        actions.updateGenerator(
+                          generatorId as state.GeneratorId,
+                        );
+
+                        if (generator.interval.set) {
+                          generator.interval.callback = () => {
+                            clicks.increase(generator.output.current);
+                          };
+                        } else {
+                          generator.interval.set = true;
+                          generator.interval.callback = () => {
+                            clicks.increase(generator.output.current);
+                          };
+
+                          setInterval(
+                            generator.interval.callback,
+                            generator.delay * 1000,
+                          );
+                        }
+
+                        if (generator.message) {
+                          views.renderMessage(generator.message);
+                        }
+                      }}
+                    >
                       {generator.label}
                     </button>{' '}
                     <span className="owned">

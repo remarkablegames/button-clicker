@@ -7,7 +7,7 @@ import { elements } from '../utils';
  * @param text - Message.
  */
 export function renderMessage(text = '') {
-  const { total } = state.clicks;
+  const { total } = state.useClickStore();
   let message;
 
   if (text) {

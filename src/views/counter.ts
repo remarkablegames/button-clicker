@@ -5,5 +5,5 @@ import { elements } from '../utils';
  * Renders counter.
  */
 export function renderCounter(): void {
-  elements.counter.innerText = state.clicks.current.toLocaleString();
+  elements.counter.innerText = state.useClickStore().current.toLocaleString();
 }
