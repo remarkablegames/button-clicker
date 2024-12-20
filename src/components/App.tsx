@@ -4,13 +4,9 @@ import * as actions from '../actions';
 import * as events from '../events';
 import * as state from '../state';
 import { formatGeneratorOutput } from '../utils';
-import * as views from '../views';
 
 export default function App() {
   useEffect(() => {
-    views.renderCounter();
-    views.renderCursor();
-
     events.addCursorListener();
     events.addGeneratorListeners();
   }, []);
@@ -18,9 +14,10 @@ export default function App() {
   return (
     <>
       <header id="message">Welcome to Button Clicker.</header>
+
       <main>
         <h1>Button Clicker</h1>
-        <p id="counter">0</p>
+        <p id="counter">{state.clicks.current.toLocaleString()}</p>
         <p>
           <button
             title="Click Button"
@@ -48,11 +45,19 @@ export default function App() {
                 <button disabled title="Cursor">
                   Cursor
                 </button>{' '}
-                <span className="owned"></span>
+                <span className="owned">
+                  {(state.cursor.owned - 1).toLocaleString()}
+                </span>
               </td>
-              <td className="cost" />
-              <td className="output-current" />
-              <td className="output-next" />
+              <td className="cost">
+                {state.cursor.cost.next.toLocaleString()}
+              </td>
+              <td className="output-current">
+                {`${state.cursor.output.current.toLocaleString()} per click`}
+              </td>
+              <td className="output-next">
+                {`${state.cursor.output.next.toLocaleString()} per click`}
+              </td>
             </tr>
 
             {Object.entries(state.generators).map(
