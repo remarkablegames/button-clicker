@@ -5,15 +5,6 @@ import { elements, getElementById } from '../utils';
 import * as views from '../views';
 
 /**
- * Handle button click.
- */
-export function addButtonListener() {
-  elements.button.addEventListener(EVENT_CLICK, () => {
-    actions.increment(state.cursor.output.current);
-  });
-}
-
-/**
  * Handle cursor upgrade.
  */
 export function addCursorListener() {

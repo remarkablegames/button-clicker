@@ -3,15 +3,22 @@ import { SELECTOR_BUTTON } from '../constants';
 /**
  * Elements.
  */
-const cursor = document.getElementById('cursor')!;
-
 export const elements = {
-  button: document.getElementById('button')!,
-  counter: document.getElementById('counter')!,
-  cursor,
-  cursorButton: cursor.querySelector(SELECTOR_BUTTON)!,
-  message: document.getElementById('message')!,
-  store: document.getElementById('store')!,
+  get counter() {
+    return document.getElementById('counter')!;
+  },
+  get cursor() {
+    return document.getElementById('cursor')!;
+  },
+  get cursorButton() {
+    return document.getElementById('cursor')!.querySelector(SELECTOR_BUTTON)!;
+  },
+  get message() {
+    return document.getElementById('message')!;
+  },
+  get store() {
+    return document.getElementById('store')!;
+  },
 };
 
 type ElementId = keyof typeof elements;

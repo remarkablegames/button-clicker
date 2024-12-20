@@ -1,11 +1,12 @@
-import * as events from './events';
-import * as views from './views';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-views.initializeGenerators();
-views.renderCounter();
-views.renderCursor();
-views.renderGenerators();
+import App from './components/App';
 
-events.addButtonListener();
-events.addCursorListener();
-events.addGeneratorListeners();
+export const root = createRoot(document.getElementById('root')!);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
