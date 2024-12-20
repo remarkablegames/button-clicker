@@ -3,19 +3,6 @@ import { calculateNextCost } from '../utils';
 import * as views from '../views';
 
 /**
- * Updates cursor.
- */
-export function updateCursor() {
-  const { cursor } = state;
-  const { cost, output } = cursor;
-  const owned = ++cursor.owned;
-  cost.next = calculateNextCost(cost.base, cost.rate, owned - 1);
-  output.current = output.next;
-  output.next = Math.round(output.base * owned);
-  views.renderCursor();
-}
-
-/**
  * Updates generator.
  *
  * @param id - Generator id.
