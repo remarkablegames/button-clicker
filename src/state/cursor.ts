@@ -1,19 +1,8 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
+import type { Cost, Output } from '../types';
 import { calculateNextCost } from '../utils';
-
-interface Cost {
-  base: number;
-  next: number;
-  rate: number;
-}
-
-interface Output {
-  base: number;
-  next: number;
-  current: number;
-}
 
 interface CursorState {
   message: string;

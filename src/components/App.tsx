@@ -1,11 +1,11 @@
-import * as actions from '../actions';
 import * as state from '../state';
 import { formatGeneratorOutput } from '../utils';
 import * as views from '../views';
 
 export default function App() {
-  const click = state.useClickStore();
-  const cursor = state.useCursorStore();
+  const clickStore = state.useClickStore();
+  const cursorStore = state.useCursorStore();
+  const generatorStore = state.useGeneratorStore();
 
   return (
     <>
@@ -13,12 +13,12 @@ export default function App() {
 
       <main>
         <h1>Button Clicker</h1>
-        <p id="counter">{click.current.toLocaleString()}</p>
+        <p id="counter">{clickStore.current.toLocaleString()}</p>
         <p>
           <button
             title="Click Button"
             onClick={() => {
-              click.increase(cursor.output.current);
+              clickStore.increase(cursorStore.output.current);
             }}
           >
             Click Button
@@ -39,92 +39,99 @@ export default function App() {
             <tr id="cursor">
               <td>
                 <button
-                  disabled={click.current < cursor.cost.next}
+                  disabled={clickStore.current < cursorStore.cost.next}
                   title="Cursor"
                   onClick={() => {
-                    click.decrease(cursor.cost.next);
-                    cursor.purchase();
-                    views.renderMessage(cursor.message);
+                    clickStore.decrease(cursorStore.cost.next);
+                    cursorStore.purchase();
+                    views.renderMessage(cursorStore.message);
                   }}
                 >
                   Cursor
                 </button>{' '}
                 <span className="owned">
-                  {(cursor.owned - 1).toLocaleString()}
+                  {(cursorStore.owned - 1).toLocaleString()}
                 </span>
               </td>
 
-              <td className="cost">{cursor.cost.next.toLocaleString()}</td>
+              <td className="cost">{cursorStore.cost.next.toLocaleString()}</td>
 
               <td className="output-current">
-                {`${cursor.output.current.toLocaleString()} per click`}
+                {`${cursorStore.output.current.toLocaleString()} per click`}
               </td>
 
               <td className="output-next">
-                {`${cursor.output.next.toLocaleString()} per click`}
+                {`${cursorStore.output.next.toLocaleString()} per click`}
               </td>
             </tr>
 
-            {Object.entries(state.generators).map(
-              ([generatorId, generator]) => (
-                <tr id={generatorId} key={generatorId}>
-                  <td>
-                    <button
-                      disabled={click.current < generator.cost.next}
-                      title={generator.label}
-                      onClick={() => {
-                        click.decrease(generator.cost.next);
-                        actions.updateGenerator(
-                          generatorId as state.GeneratorId,
-                        );
+            {(Object.keys(generatorStore) as state.GeneratorId[]).map(
+              (generatorId) => {
+                if (!/^generator\d$/.test(generatorId)) {
+                  return;
+                }
 
-                        if (generator.interval.set) {
-                          generator.interval.callback = () => {
-                            click.increase(generator.output.current);
-                          };
-                        } else {
-                          generator.interval.set = true;
-                          generator.interval.callback = () => {
-                            click.increase(generator.output.current);
-                          };
+                const generator = generatorStore[generatorId];
 
-                          setInterval(
-                            generator.interval.callback,
-                            generator.delay * 1000,
-                          );
-                        }
-
-                        if (generator.message) {
+                return (
+                  <tr id={generatorId} key={generatorId}>
+                    <td>
+                      <button
+                        disabled={clickStore.current < generator.cost.next}
+                        title={generator.label}
+                        onClick={() => {
+                          clickStore.decrease(generator.cost.next);
+                          generatorStore.purchase(generatorId);
                           views.renderMessage(generator.message);
-                        }
-                      }}
-                    >
-                      {generator.label}
-                    </button>{' '}
-                    <span className="owned">
-                      {generator.owned.toLocaleString()}
-                    </span>
-                  </td>
 
-                  <td className="cost">
-                    {generator.cost.next.toLocaleString()}
-                  </td>
+                          if (generator.interval.set) {
+                            generator.interval.callback = () => {
+                              clickStore.increase(generator.output.current);
+                            };
+                          } else {
+                            generator.interval.set = true;
+                            generator.interval.callback = () => {
+                              clickStore.increase(generator.output.current);
+                            };
 
-                  <td className="output-current">
-                    {formatGeneratorOutput(
-                      generator.output.current,
-                      generator.delay,
-                    )}
-                  </td>
+                            setInterval(
+                              generator.interval.callback,
+                              generator.delay * 1000,
+                            );
+                          }
 
-                  <td className="output-next">
-                    {formatGeneratorOutput(
-                      generator.output.next,
-                      generator.delay,
-                    )}
-                  </td>
-                </tr>
-              ),
+                          if (generator.message) {
+                            views.renderMessage(generator.message);
+                          }
+                        }}
+                      >
+                        {generator.label}
+                      </button>{' '}
+                      <span className="owned">
+                        {generator.owned.toLocaleString()}
+                      </span>
+                    </td>
+
+                    <td className="cost">
+                      {generator.cost.next.toLocaleString()}
+                    </td>
+
+                    <td className="output-current">
+                      {formatGeneratorOutput(
+                        generator.output.current,
+                        generator.delay,
+                      )}
+                    </td>
+
+                    <td className="output-next">
+                      {formatGeneratorOutput(
+                        generator.output.next,
+                        generator.delay,
+                      )}
+                    </td>
+                  </tr>
+                );
+              },
             )}
           </tbody>
         </table>
