@@ -68,20 +68,16 @@ export default function App() {
                 >
                   Cursor
                 </button>{' '}
-                <span className="owned">
-                  {(cursorStore.owned - 1).toLocaleString()}
-                </span>
+                <span>{(cursorStore.owned - 1).toLocaleString()}</span>
               </td>
 
-              <td className="cost">{cursorStore.cost.next.toLocaleString()}</td>
+              <td>{cursorStore.cost.next.toLocaleString()}</td>
 
-              <td className="output-current">
+              <td>
                 {`${cursorStore.output.current.toLocaleString()} per click`}
               </td>
 
-              <td className="output-next">
-                {`${cursorStore.output.next.toLocaleString()} per click`}
-              </td>
+              <td>{`${cursorStore.output.next.toLocaleString()} per click`}</td>
             </tr>
 
             {generators.map((generator) => (
@@ -102,21 +98,19 @@ export default function App() {
                   >
                     {generator.label}
                   </button>{' '}
-                  <span className="owned">
-                    {generator.owned.toLocaleString()}
-                  </span>
+                  <span>{generator.owned.toLocaleString()}</span>
                 </td>
 
-                <td className="cost">{generator.cost.next.toLocaleString()}</td>
+                <td>{generator.cost.next.toLocaleString()}</td>
 
-                <td className="output-current">
+                <td>
                   {formatGeneratorOutput(
                     generator.output.current,
                     generator.delay,
                   )}
                 </td>
 
-                <td className="output-next">
+                <td>
                   {formatGeneratorOutput(
                     generator.output.next,
                     generator.delay,
