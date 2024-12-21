@@ -2,56 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  border: 0;
-  font:
-    14px 'Lucida Grande',
-    Helvetica,
-    Arial,
-    sans-serif;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  h1 {
+    @apply text-2xl font-bold;
+  }
 
-header,
-section {
-  padding: 24px 36px;
-}
+  p {
+    @apply my-3.5;
+  }
 
-main {
-  display: block;
-}
+  button {
+    @apply rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out dark:shadow-black/30;
+  }
 
-header {
-  background: #111;
-  color: #eee;
-  font-family: Consolas, monospace;
-}
+  button:hover {
+    @apply hover:bg-neutral-700 hover:shadow-dark-2 dark:hover:shadow-dark-strong;
+  }
 
-table {
-  border-collapse: collapse;
-}
+  button:active {
+    @apply active:bg-neutral-900 active:shadow-dark-2 dark:active:shadow-dark-strong;
+  }
 
-/* zebra stripes */
-tr:nth-child(even) {
-  background: #eee;
-}
+  button:focus {
+    @apply focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 dark:focus:shadow-dark-strong;
+  }
 
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  button:disabled {
+    @apply opacity-30 disabled:pointer-events-none select-none;
+  }
 
-td:first-child {
-  text-align: left;
-}
+  /* zebra stripes */
+  tr:nth-child(even) {
+    @apply bg-neutral-100;
+  }
 
-/* github-corners */
-.github-corner > svg {
-  color: #151513 !important;
-  fill: #fafafa !important;
-  height: 64px;
-  width: 64px;
+  th,
+  td {
+    @apply border border-neutral-200 p-2;
+  }
 }

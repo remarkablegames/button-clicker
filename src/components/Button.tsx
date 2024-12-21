@@ -14,7 +14,13 @@ export default function Button() {
 
   return (
     <p>
-      <button title="Click Button" onClick={handleClick}>
+      <button
+        data-twe-ripple-color="light"
+        data-twe-ripple-init
+        onClick={handleClick}
+        title="Click Button"
+        type="button"
+      >
         Click Button
       </button>
     </p>

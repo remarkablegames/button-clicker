@@ -22,8 +22,10 @@ export default function Generators() {
     <>
       {generators.map((generator) => (
         <tr id={generator.id} key={generator.id}>
-          <td>
+          <td className="flex items-center">
             <button
+              data-twe-ripple-color="light"
+              data-twe-ripple-init
               disabled={clickStore.current < generator.cost.next}
               title={generator.label}
               onClick={() => {
@@ -37,8 +39,9 @@ export default function Generators() {
               }}
             >
               {generator.label}
-            </button>{' '}
-            {generator.owned.toLocaleString()}
+            </button>
+
+            <span className="ml-2">{generator.owned.toLocaleString()}</span>
           </td>
 
           <td>{generator.cost.next.toLocaleString()}</td>
