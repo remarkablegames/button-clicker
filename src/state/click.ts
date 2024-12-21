@@ -14,7 +14,11 @@ export const useClickStore = create<ClickState>()(
       (set) => ({
         current: 0,
         total: 0,
-        increase: (by = 1) => set((state) => ({ current: state.current + by })),
+        increase: (by = 1) =>
+          set((state) => ({
+            current: state.current + by,
+            total: state.total + by,
+          })),
         decrease: (by = 1) => set((state) => ({ current: state.current - by })),
       }),
 

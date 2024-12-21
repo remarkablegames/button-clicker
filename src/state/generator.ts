@@ -1,26 +1,8 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-import type { Cost, Output } from '../types';
+import type { Cost, GeneratorId, Output } from '../types';
 import { calculateNextCost } from '../utils';
-
-export type GeneratorId =
-  | 'generator1'
-  | 'generator2'
-  | 'generator3'
-  | 'generator4'
-  | 'generator5'
-  | 'generator6'
-  | 'generator7'
-  | 'generator8'
-  | 'generator9'
-  | 'generator10'
-  | 'generator11'
-  | 'generator12'
-  | 'generator13'
-  | 'generator14'
-  | 'generator15'
-  | 'generator16';
 
 interface Generator {
   label: string;

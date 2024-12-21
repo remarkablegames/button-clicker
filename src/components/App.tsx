@@ -1,15 +1,22 @@
-import * as state from '../state';
+import Message from '../components/Message';
+import {
+  useClickStore,
+  useCursorStore,
+  useGeneratorStore,
+  useMessageStore,
+} from '../state';
+import type { GeneratorId } from '../types';
 import { formatGeneratorOutput } from '../utils';
-import * as views from '../views';
 
 export default function App() {
-  const clickStore = state.useClickStore();
-  const cursorStore = state.useCursorStore();
-  const generatorStore = state.useGeneratorStore();
+  const clickStore = useClickStore();
+  const cursorStore = useCursorStore();
+  const generatorStore = useGeneratorStore();
+  const messageStore = useMessageStore();
 
   return (
     <>
-      <header id="message">Welcome to Button Clicker.</header>
+      <Message />
 
       <main>
         <h1>Button Clicker</h1>
@@ -19,6 +26,7 @@ export default function App() {
             title="Click Button"
             onClick={() => {
               clickStore.increase(cursorStore.output.current);
+              messageStore.update();
             }}
           >
             Click Button
@@ -44,7 +52,7 @@ export default function App() {
                   onClick={() => {
                     clickStore.decrease(cursorStore.cost.next);
                     cursorStore.purchase();
-                    views.renderMessage(cursorStore.message);
+                    messageStore.update(cursorStore.message);
                   }}
                 >
                   Cursor
@@ -65,7 +73,7 @@ export default function App() {
               </td>
             </tr>
 
-            {(Object.keys(generatorStore) as state.GeneratorId[]).map(
+            {(Object.keys(generatorStore) as GeneratorId[]).map(
               (generatorId) => {
                 if (!/^generator\d$/.test(generatorId)) {
                   return;
@@ -82,16 +90,18 @@ export default function App() {
                         onClick={() => {
                           clickStore.decrease(generator.cost.next);
                           generatorStore.purchase(generatorId);
-                          views.renderMessage(generator.message);
+                          messageStore.update(generator.message);
 
                           if (generator.interval.set) {
                             generator.interval.callback = () => {
                               clickStore.increase(generator.output.current);
+                              messageStore.update();
                             };
                           } else {
                             generator.interval.set = true;
                             generator.interval.callback = () => {
                               clickStore.increase(generator.output.current);
+                              messageStore.update();
                             };
 
                             setInterval(
@@ -101,7 +111,7 @@ export default function App() {
                           }
 
                           if (generator.message) {
-                            views.renderMessage(generator.message);
+                            messageStore.update(generator.message);
                           }
                         }}
                       >
