@@ -1,3 +1,4 @@
+import Button from '../components/Button';
 import Counter from '../components/Counter';
 import Generators from '../components/Generators';
 import Message from '../components/Message';
@@ -15,17 +16,7 @@ export default function App() {
       <main>
         <h1>Button Clicker</h1>
         <Counter />
-        <p>
-          <button
-            title="Click Button"
-            onClick={() => {
-              clickStore.increase(cursorStore.output.current);
-              messageStore.update();
-            }}
-          >
-            Click Button
-          </button>
-        </p>
+        <Button />
 
         <table>
           <thead>
