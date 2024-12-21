@@ -1,29 +1,11 @@
-import { useEffect } from 'react';
-
+import Generators from '../components/Generators';
 import Message from '../components/Message';
-import { useGenerators } from '../hooks';
-import {
-  useClickStore,
-  useCursorStore,
-  useGeneratorStore,
-  useMessageStore,
-} from '../state';
-import { formatGeneratorOutput } from '../utils';
+import { useClickStore, useCursorStore, useMessageStore } from '../state';
 
 export default function App() {
   const clickStore = useClickStore();
   const cursorStore = useCursorStore();
-  const generatorStore = useGeneratorStore();
-  const generators = useGenerators();
   const messageStore = useMessageStore();
-
-  useEffect(() => {
-    generators.forEach((generator) => {
-      if (generator.output.current) {
-        generatorStore.setInterval(generator.id);
-      }
-    });
-  }, []);
 
   return (
     <>
@@ -80,44 +62,7 @@ export default function App() {
               <td>{`${cursorStore.output.next.toLocaleString()} per click`}</td>
             </tr>
 
-            {generators.map((generator) => (
-              <tr id={generator.id} key={generator.id}>
-                <td>
-                  <button
-                    disabled={clickStore.current < generator.cost.next}
-                    title={generator.label}
-                    onClick={() => {
-                      clickStore.decrease(generator.cost.next);
-                      generatorStore.purchase(generator.id);
-                      messageStore.update(generator.message);
-
-                      if (generator.message) {
-                        messageStore.update(generator.message);
-                      }
-                    }}
-                  >
-                    {generator.label}
-                  </button>{' '}
-                  <span>{generator.owned.toLocaleString()}</span>
-                </td>
-
-                <td>{generator.cost.next.toLocaleString()}</td>
-
-                <td>
-                  {formatGeneratorOutput(
-                    generator.output.current,
-                    generator.delay,
-                  )}
-                </td>
-
-                <td>
-                  {formatGeneratorOutput(
-                    generator.output.next,
-                    generator.delay,
-                  )}
-                </td>
-              </tr>
-            ))}
+            <Generators />
           </tbody>
         </table>
       </main>
