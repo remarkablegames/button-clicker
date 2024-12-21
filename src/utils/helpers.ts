@@ -1,28 +1,3 @@
-import { SELECTOR_BUTTON } from '../constants';
-
-/**
- * Elements.
- */
-export const elements = {
-  get counter() {
-    return document.getElementById('counter')!;
-  },
-  get cursor() {
-    return document.getElementById('cursor')!;
-  },
-  get cursorButton() {
-    return document.getElementById('cursor')!.querySelector(SELECTOR_BUTTON)!;
-  },
-  get message() {
-    return document.getElementById('message')!;
-  },
-  get store() {
-    return document.getElementById('store')!;
-  },
-};
-
-type ElementId = keyof typeof elements;
-
 /**
  * Calculates next cost of cursor or generator upgrade.
  *
@@ -36,21 +11,6 @@ export const calculateNextCost = (
   rate: number,
   owned: number,
 ): number => Math.floor(base * Math.pow(rate, owned));
-
-/**
- * Gets element by id (from cache if applicable).
- *
- * @param id - Element id.
- * @returns - Element.
- */
-export function getElementById(id: string): HTMLElement {
-  const element = elements[id as ElementId];
-  if (element) {
-    return element;
-  }
-  return ((elements[id as ElementId] as HTMLElement) =
-    document.getElementById(id)!);
-}
 
 /**
  * Formats generator output description.
