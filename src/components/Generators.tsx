@@ -40,9 +40,9 @@ export default function Generators() {
             >
               {generator.label}
             </button>
-
-            <span className="ml-2">{generator.owned.toLocaleString()}</span>
           </td>
+
+          <td>{generator.owned.toLocaleString()}</td>
 
           <td>{generator.cost.next.toLocaleString()}</td>
 

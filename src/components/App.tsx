@@ -25,6 +25,7 @@ export default function App() {
           <thead>
             <tr>
               <th />
+              <th>Owned</th>
               <th>Cost</th>
               <th>Current Output</th>
               <th>Next Output</th>

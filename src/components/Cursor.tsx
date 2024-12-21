@@ -23,8 +23,9 @@ export default function Cursor() {
         >
           Cursor
         </button>{' '}
-        <span>{(cursorStore.owned - 1).toLocaleString()}</span>
       </td>
+
+      <td>{(cursorStore.owned - 1).toLocaleString()}</td>
 
       <td>{cursorStore.cost.next.toLocaleString()}</td>
 
