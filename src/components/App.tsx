@@ -13,7 +13,7 @@ export default function App() {
 
       <main>
         <h1>Button Clicker</h1>
-        <p id="counter">{clickStore.current.toLocaleString()}</p>
+        <p>{clickStore.current.toLocaleString()}</p>
         <p>
           <button
             title="Click Button"
@@ -36,8 +36,8 @@ export default function App() {
             </tr>
           </thead>
 
-          <tbody id="store">
-            <tr id="cursor">
+          <tbody>
+            <tr>
               <td>
                 <button
                   disabled={clickStore.current < cursorStore.cost.next}
