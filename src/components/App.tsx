@@ -1,19 +1,15 @@
 import Button from '../components/Button';
 import Counter from '../components/Counter';
+import Cursor from '../components/Cursor';
 import Generators from '../components/Generators';
 import Message from '../components/Message';
-import { useClickStore, useCursorStore, useMessageStore } from '../state';
 
 export default function App() {
-  const clickStore = useClickStore();
-  const cursorStore = useCursorStore();
-  const messageStore = useMessageStore();
-
   return (
-    <>
+    <main>
       <Message />
 
-      <main>
+      <section>
         <h1>Button Clicker</h1>
         <Counter />
         <Button />
@@ -29,35 +25,11 @@ export default function App() {
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <button
-                  disabled={clickStore.current < cursorStore.cost.next}
-                  title="Cursor"
-                  onClick={() => {
-                    clickStore.decrease(cursorStore.cost.next);
-                    cursorStore.purchase();
-                    messageStore.update(cursorStore.message);
-                  }}
-                >
-                  Cursor
-                </button>{' '}
-                <span>{(cursorStore.owned - 1).toLocaleString()}</span>
-              </td>
-
-              <td>{cursorStore.cost.next.toLocaleString()}</td>
-
-              <td>
-                {`${cursorStore.output.current.toLocaleString()} per click`}
-              </td>
-
-              <td>{`${cursorStore.output.next.toLocaleString()} per click`}</td>
-            </tr>
-
+            <Cursor />
             <Generators />
           </tbody>
         </table>
-      </main>
-    </>
+      </section>
+    </main>
   );
 }
