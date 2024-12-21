@@ -1,20 +1,8 @@
 # button-clicker
 
-<kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game). It's built with HTML, CSS, and JavaScript.
+<kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game).
 
-[Play the demo.](https://remarkablegames.org/button-clicker/)
-
-The template is built with:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Vite](https://vitejs.dev/)
-
-## Games
-
-Games that use this template:
-
-- [Button Clicker](https://remarkablegames.org/button-clicker)
-- [Replit Clicker](https://repl.it/talk/challenge/replit-clicker/13259)
+[Play the game.](https://remarkablegames.org/button-clicker/)
 
 ## Prerequisites
 
