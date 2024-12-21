@@ -1,3 +1,4 @@
+import Counter from '../components/Counter';
 import Generators from '../components/Generators';
 import Message from '../components/Message';
 import { useClickStore, useCursorStore, useMessageStore } from '../state';
@@ -13,7 +14,7 @@ export default function App() {
 
       <main>
         <h1>Button Clicker</h1>
-        <p>{clickStore.current.toLocaleString()}</p>
+        <Counter />
         <p>
           <button
             title="Click Button"
