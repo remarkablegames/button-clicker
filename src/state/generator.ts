@@ -3,6 +3,7 @@ import { devtools, persist } from 'zustand/middleware';
 
 import type { Cost, GeneratorId, Output } from '../types';
 import { calculateNextCost } from '../utils';
+import { useClickStore, useMessageStore } from '.';
 
 interface Generator {
   label: string;
@@ -11,14 +12,12 @@ interface Generator {
   delay: number; // seconds
   cost: Cost;
   output: Output;
-  interval: {
-    callback: () => void;
-    set: boolean;
-  };
+  intervalId?: number;
 }
 
 type GeneratorState = Record<GeneratorId, Generator> & {
   purchase: (generatorId: GeneratorId) => void;
+  setInterval: (generatorId: GeneratorId) => void;
 };
 
 /**
@@ -43,10 +42,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 1,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator2: {
@@ -63,10 +58,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 1,
             next: 1,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -86,10 +77,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 8,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator4: {
@@ -108,10 +95,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 47,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator5: {
@@ -129,10 +112,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 260,
             next: 260,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -153,10 +132,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 14e2,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator7: {
@@ -175,10 +150,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 78e2,
             next: 78e2,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -199,10 +170,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 44e3,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator9: {
@@ -221,10 +188,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 26e4,
             next: 26e4,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -245,10 +208,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 16e5,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator11: {
@@ -267,10 +226,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 1e7,
             next: 1e7,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -291,10 +246,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 65e6,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator13: {
@@ -313,10 +264,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 43e7,
             next: 43e7,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -337,10 +284,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 29e8,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         generator15: {
@@ -359,10 +302,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             base: 21e9,
             next: 21e9,
             current: 0,
-          },
-          interval: {
-            callback() {},
-            set: false,
           },
         },
 
@@ -383,10 +322,6 @@ export const useGeneratorStore = create<GeneratorState>()(
             next: 15e10,
             current: 0,
           },
-          interval: {
-            callback() {},
-            set: false,
-          },
         },
 
         purchase: (generatorId) =>
@@ -394,9 +329,29 @@ export const useGeneratorStore = create<GeneratorState>()(
             const generator = state[generatorId];
             const { cost, output } = generator;
             const owned = ++generator.owned;
+
             cost.next = calculateNextCost(cost.base, cost.rate, owned);
             output.current = output.next;
             output.next = Math.round(output.base * (owned + 1));
+
+            state.setInterval(generatorId);
+
+            return state;
+          }),
+
+        setInterval: (generatorId) =>
+          set((state) => {
+            const generator = state[generatorId];
+
+            if (generator.intervalId) {
+              clearInterval(generator.intervalId);
+            }
+
+            generator.intervalId = setInterval(() => {
+              useClickStore.getState().increase(generator.output.current);
+              useMessageStore.getState().update();
+            }, generator.delay * 1000) as unknown as number;
+
             return state;
           }),
       }),

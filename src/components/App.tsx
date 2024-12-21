@@ -1,18 +1,29 @@
+import { useEffect } from 'react';
+
 import Message from '../components/Message';
+import { useGenerators } from '../hooks';
 import {
   useClickStore,
   useCursorStore,
   useGeneratorStore,
   useMessageStore,
 } from '../state';
-import type { GeneratorId } from '../types';
 import { formatGeneratorOutput } from '../utils';
 
 export default function App() {
   const clickStore = useClickStore();
   const cursorStore = useCursorStore();
   const generatorStore = useGeneratorStore();
+  const generators = useGenerators();
   const messageStore = useMessageStore();
+
+  useEffect(() => {
+    generators.forEach((generator) => {
+      if (generator.output.current) {
+        generatorStore.setInterval(generator.id);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -73,76 +84,46 @@ export default function App() {
               </td>
             </tr>
 
-            {(Object.keys(generatorStore) as GeneratorId[]).map(
-              (generatorId) => {
-                if (!/^generator\d$/.test(generatorId)) {
-                  return;
-                }
+            {generators.map((generator) => (
+              <tr id={generator.id} key={generator.id}>
+                <td>
+                  <button
+                    disabled={clickStore.current < generator.cost.next}
+                    title={generator.label}
+                    onClick={() => {
+                      clickStore.decrease(generator.cost.next);
+                      generatorStore.purchase(generator.id);
+                      messageStore.update(generator.message);
 
-                const generator = generatorStore[generatorId];
+                      if (generator.message) {
+                        messageStore.update(generator.message);
+                      }
+                    }}
+                  >
+                    {generator.label}
+                  </button>{' '}
+                  <span className="owned">
+                    {generator.owned.toLocaleString()}
+                  </span>
+                </td>
 
-                return (
-                  <tr id={generatorId} key={generatorId}>
-                    <td>
-                      <button
-                        disabled={clickStore.current < generator.cost.next}
-                        title={generator.label}
-                        onClick={() => {
-                          clickStore.decrease(generator.cost.next);
-                          generatorStore.purchase(generatorId);
-                          messageStore.update(generator.message);
+                <td className="cost">{generator.cost.next.toLocaleString()}</td>
 
-                          if (generator.interval.set) {
-                            generator.interval.callback = () => {
-                              clickStore.increase(generator.output.current);
-                              messageStore.update();
-                            };
-                          } else {
-                            generator.interval.set = true;
-                            generator.interval.callback = () => {
-                              clickStore.increase(generator.output.current);
-                              messageStore.update();
-                            };
+                <td className="output-current">
+                  {formatGeneratorOutput(
+                    generator.output.current,
+                    generator.delay,
+                  )}
+                </td>
 
-                            setInterval(
-                              generator.interval.callback,
-                              generator.delay * 1000,
-                            );
-                          }
-
-                          if (generator.message) {
-                            messageStore.update(generator.message);
-                          }
-                        }}
-                      >
-                        {generator.label}
-                      </button>{' '}
-                      <span className="owned">
-                        {generator.owned.toLocaleString()}
-                      </span>
-                    </td>
-
-                    <td className="cost">
-                      {generator.cost.next.toLocaleString()}
-                    </td>
-
-                    <td className="output-current">
-                      {formatGeneratorOutput(
-                        generator.output.current,
-                        generator.delay,
-                      )}
-                    </td>
-
-                    <td className="output-next">
-                      {formatGeneratorOutput(
-                        generator.output.next,
-                        generator.delay,
-                      )}
-                    </td>
-                  </tr>
-                );
-              },
-            )}
+                <td className="output-next">
+                  {formatGeneratorOutput(
+                    generator.output.next,
+                    generator.delay,
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </main>
