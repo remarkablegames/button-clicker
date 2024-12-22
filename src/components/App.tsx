@@ -16,7 +16,7 @@ export default function App() {
     <main>
       <Message />
 
-      <section className="py-6 px-9">
+      <section className="px-9 py-6">
         <h1>Button Clicker</h1>
         <Counter />
         <Button />

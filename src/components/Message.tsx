@@ -4,7 +4,7 @@ export default function Message() {
   const { message } = useMessageStore();
 
   return (
-    <header className="py-7 px-9 font-mono bg-neutral-900 text-gray-100">
+    <header className="bg-neutral-900 px-9 py-7 font-mono text-gray-100">
       {message}
     </header>
   );
