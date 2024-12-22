@@ -5,7 +5,7 @@ export function useGenerators() {
   const generatorStore = useGeneratorStore();
 
   return (Object.keys(generatorStore) as GeneratorId[])
-    .filter((generatorId) => /^generator\d$/.test(generatorId))
+    .filter((generatorId) => /^generator\d+$/.test(generatorId))
     .map((generatorId) => ({
       id: generatorId,
       ...generatorStore[generatorId],
