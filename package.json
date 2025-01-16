@@ -28,7 +28,7 @@
     "@vitejs/plugin-react-swc": "3.7.2",
     "autoprefixer": "10.4.20",
     "eslint": "9.18.0",
-    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-prettier": "5.2.2",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "15.14.0",
     "husky": "9.1.7",
