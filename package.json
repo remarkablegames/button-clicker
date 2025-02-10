@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "8.23.0",
     "@vitejs/plugin-react-swc": "3.8.0",
     "autoprefixer": "10.4.20",
-    "eslint": "9.19.0",
+    "eslint": "9.20.0",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "15.14.0",
