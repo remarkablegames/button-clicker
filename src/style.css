@@ -1,6 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@source '../node_modules/tw-elements/js/**/*.js';
+@plugin 'tw-elements/plugin.cjs';
+
+@theme {
+  --font-*: initial;
+  --font-sans:
+    'Lucida Grande', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   h1 {
@@ -12,23 +42,23 @@
   }
 
   button {
-    @apply rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out dark:shadow-black/30;
+    @apply shadow-dark-3 rounded-sm bg-neutral-800 px-6 pt-2.5 pb-2 text-xs leading-normal font-medium text-neutral-50 uppercase transition duration-150 ease-in-out dark:shadow-black/30;
   }
 
   button:hover {
-    @apply hover:bg-neutral-700 hover:shadow-dark-2 dark:hover:shadow-dark-strong;
+    @apply hover:shadow-dark-2 dark:hover:shadow-dark-strong hover:bg-neutral-700;
   }
 
   button:active {
-    @apply active:bg-neutral-900 active:shadow-dark-2 dark:active:shadow-dark-strong;
+    @apply active:shadow-dark-2 dark:active:shadow-dark-strong active:bg-neutral-900;
   }
 
   button:focus {
-    @apply focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 dark:focus:shadow-dark-strong;
+    @apply focus:shadow-dark-2 dark:focus:shadow-dark-strong focus:bg-neutral-700 focus:ring-0 focus:outline-hidden;
   }
 
   button:disabled {
-    @apply opacity-30 disabled:pointer-events-none select-none;
+    @apply opacity-30 select-none disabled:pointer-events-none;
   }
 
   /* zebra stripes */
