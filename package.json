@@ -20,7 +20,7 @@
     "@eslint/compat": "1.4.0",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.36.0",
-    "@tailwindcss/postcss": "4.1.13",
+    "@tailwindcss/postcss": "4.1.14",
     "@types/gtag.js": "0.0.20",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
