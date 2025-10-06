@@ -41,7 +41,7 @@
     "tailwindcss": "4.1.14",
     "tw-elements": "2.0.0",
     "typescript": "5.9.3",
-    "vite": "7.1.8",
+    "vite": "7.1.9",
     "zustand": "5.0.8"
   },
   "private": true,
