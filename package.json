@@ -23,7 +23,7 @@
     "@tailwindcss/postcss": "4.1.14",
     "@types/gtag.js": "0.0.20",
     "@types/react": "19.2.1",
-    "@types/react-dom": "19.2.0",
+    "@types/react-dom": "19.2.1",
     "@typescript-eslint/eslint-plugin": "8.46.0",
     "@typescript-eslint/parser": "8.46.0",
     "@vitejs/plugin-react-swc": "4.1.0",
