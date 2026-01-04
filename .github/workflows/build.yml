@@ -31,12 +31,12 @@ jobs:
       - name: Type check
         run: npm run lint:tsc
 
-      - name: Build
+      - name: Build game
         run: npm run build -- --base /${{ github.event.repository.name }}/
         env:
           VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
-      - name: Deploy
+      - name: Deploy site
         if: github.ref_name == 'master'
         uses: remarkablemark/gitploy-action@v1
         with:
