@@ -21,6 +21,12 @@ git clone https://github.com/remarkablegames/button-clicker.git
 cd button-clicker
 ```
 
+Install the dependencies:
+
+```sh
+npm install
+```
+
 Rename the project:
 
 ```sh
@@ -37,12 +43,6 @@ Update the files:
 - [ ] `index.html`
 - [ ] `package.json`
 - [ ] `public/manifest.json`
-
-Install the dependencies:
-
-```sh
-npm install
-```
 
 ## Environment Variables
 
