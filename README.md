@@ -2,7 +2,9 @@
 
 <kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game).
 
-[Play the game.](https://remarkablegames.org/button-clicker/)
+Play the game on:
+
+- [remarkablegames](https://remarkablegames.org/button-clicker/)
 
 ## Prerequisites
 
@@ -21,6 +23,9 @@ Rename the project:
 
 ```sh
 git grep -l button-clicker | xargs sed -i '' -e 's/button-clicker/my-clicker/g'
+```
+
+```sh
 git grep -l 'Button Clicker' | xargs sed -i '' -e 's/Button Clicker/My Clicker/g'
 ```
 
@@ -35,29 +40,6 @@ Install the dependencies:
 
 ```sh
 npm install
-```
-
-Initialize a new repository:
-
-```sh
-rm -rf .git
-git init
-```
-
-Make your first commit:
-
-```sh
-git add .
-git commit -m 'feat: initialize game from button-clicker'
-```
-
-> Commit messages follow the [Conventional Commits](https://conventionalcommits.org/) format, which is used during release.
-
-Once you're ready, [push the local repository to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) (or another remote repository):
-
-```sh
-git remote add origin <remote-repository-url>
-git push origin -u origin master
 ```
 
 ## Environment Variables
