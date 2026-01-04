@@ -1,5 +1,7 @@
 # button-clicker
 
+[![build](https://github.com/remarkablegames/button-clicker/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/button-clicker/actions/workflows/build.yml)
+
 <kbd>button-clicker</kbd> is a template for creating [incremental games](https://wikipedia.org/wiki/Incremental_game).
 
 Play the game on:
