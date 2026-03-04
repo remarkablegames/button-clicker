@@ -32,7 +32,7 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "17.4.0",
     "husky": "9.1.7",
-    "lint-staged": "16.3.1",
+    "lint-staged": "16.3.2",
     "postcss": "8.5.8",
     "prettier": "3.8.1",
     "prettier-plugin-tailwindcss": "0.7.2",
