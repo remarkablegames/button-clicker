@@ -37,7 +37,7 @@
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
     "react": "19.2.7",
-    "react-dom": "19.2.6",
+    "react-dom": "19.2.7",
     "tailwindcss": "4.3.0",
     "tw-elements": "2.0.0",
     "typescript": "5.9.3",
