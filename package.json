@@ -42,7 +42,7 @@
     "tw-elements": "2.0.0",
     "typescript": "5.9.3",
     "vite": "8.2.1",
-    "zustand": "5.0.14"
+    "zustand": "5.0.15"
   },
   "private": true,
   "license": "MIT"
